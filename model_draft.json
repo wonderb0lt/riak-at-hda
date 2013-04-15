@@ -1,0 +1,56 @@
+{
+   "id": "00QKXC",
+   "passengers": [{"BECKER/ANNAMS": 0}, # 0 = Adult, 1 = Child, 2 = Infant
+                  {"BECKER/ARNOLDMR": 0}, 
+                  {"BECKER/ALEXANDERCHD": 1},
+                  {"BECKER/ANNABELLEINF": 2}],
+   "flights": [
+      {
+         "id": "TG921",
+         "vendor_locator": "00V2NL",
+         "Departure": 1373467500, # Unix timestamp @ GMT
+         "Arrival": 1373523900,
+         "Duration": 38400, # in seconds
+         "From": { # Improvement: Use a different bucket for airport/terminal information
+            "Airport": "Frankfurt Intl",
+            "Terminal": "Terminal 1",
+            "IATA": "FRA",
+            "Location": "Frankfurt, Germany" 
+         },
+         "To": { 
+           "Airport": "Suvarnabhumi Intl Arpt",
+           "IATA": "BKK",
+           "Location": "Bangkok, Thailand"
+         },
+         "Class": "Q", # Integer values instead of string?
+         "Stops": [],
+         "Status": 1, # TODO: Enumerate the possible status
+         "Aircraft": "Airbus Industrie A380"
+         "Services": ["infant"]
+       },
+
+       {
+         "id": "TG920",
+         "vendor_locator": "00V2NL",
+         "Departure": 1375227900,
+         "Arrival": 1375250400,
+         "Duration": 40500,
+         "From": { 
+            "Airport": "Suvarnabhumi Intl Arpt",
+            "IATA": "BKK",
+            "Location": "Bangkok, Thailand"
+         },
+         "To": { 
+            "Airport": "Frankfurt Intl",
+            "Terminal": "Terminal 1",
+            "IATA": "FRA",
+            "Location": "Frankfurt, Germany" 
+         },
+         "Class": "Q",
+         "Stops": [],
+         "Status": 1,
+         "Aircraft": "Airbus Industrie A380",
+         "Services": ["infant"]
+       }
+   ]
+}
