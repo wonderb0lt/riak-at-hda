@@ -1,0 +1,58 @@
+E-TICKET -  Galileo Reference: 00P5LM
+
+  Passenger(s):
+    RAUSS/ARMINMR
+
+FLIGHT: Dusseldorf to Paris (LH3220) Vendor Locator: 00ZOG2
+   Date:      April 11, 2013 (Thu)
+   Departs:   11:10 hrs
+   Airline:   Lufthansa
+   Arrives:   12:15 hrs
+   Flight:    LH3220 (operated by EUROWINGS AG)
+   From:      Dusseldorf,  Germany
+   Airport:   DUS - Dusseldorf Arpt
+   To:        Paris,  France
+   Airport:   CDG - Charles De Gaulle Intl Arpt, Terminal 1
+   Class:     Economy (W)
+   Baggage:   ADT 1PC
+   Stops:     Non-stop
+   Duration:  01:05
+   Status:    Confirmed
+   Aircraft:  Canadair Regional Jet 900
+   Service(s):
+      Ticket Numbers (E-tickets) -  2203272401000C1
+   E-ticket(s):
+      RAUSS/ARMINMR: 220 3272 401000
+
+FLIGHT: Paris to Dusseldorf (LH3223) Vendor Locator: 00ZOG2
+   Date:      April 11, 2013 (Thu)
+   Departs:   17:50 hrs
+   Airline:   Lufthansa
+   Arrives:   18:55 hrs
+   Flight:    LH3223 (operated by EUROWINGS AG)
+   From:      Paris,  France
+   Airport:   CDG - Charles De Gaulle Intl Arpt, Terminal 1
+   To:        Dusseldorf,  Germany
+   Airport:   DUS - Dusseldorf Arpt
+   Class:     Economy (G)
+   Baggage:   ADT 1PC
+   Stops:     Non-stop
+   Duration:  01:05
+   Status:    Confirmed
+   Aircraft:  Canadair Regional Jet 900
+   Service(s):
+      Ticket Numbers (E-tickets) -  2203272401000C2
+   E-ticket(s):
+      RAUSS/ARMINMR: 220 3272 401000
+
+FARES:
+
+Segment          : 1, 2
+Name             : RAUSS/ARMINMR
+Type             : ADT
+FOP              : INVOICE
+Base             : EUR 303.00
+Taxes            : 135.71
+Total            : EUR 438.71
+
+

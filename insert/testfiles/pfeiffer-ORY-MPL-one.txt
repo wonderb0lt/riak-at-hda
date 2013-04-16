@@ -1,0 +1,33 @@
+E-TICKET -  Galileo Reference: 006MME
+
+    Passenger(s):
+    PFEIFFER/ELKEMS
+
+FLIGHT: Paris to Montpellier (AF7542) Vendor Locator: 00QRCQ
+   Date:      March 27, 2013 (Wed)
+   Departs:   08:35 hrs
+   Airline:   Air France
+   Arrives:   09:50 hrs
+   Flight:    AF7542 (operated by Air France)
+   From:      Paris,  France
+   Airport:   ORY - Orly Arpt, Terminal W
+   To:        Montpellier,  France
+   Airport:   MPL - Frejorgues Arpt, Terminal info not found
+   Class:     Economy (W)
+   Baggage:   ADT 2PC
+   Stops:     Non-stop
+   Duration:  01:15
+   Status:    Confirmed
+   Aircraft:  Airbus Industrie A321
+   Service(s):
+      Ticket Numbers (E-tickets) -  0573272401000C1
+
+FARES:
+
+Segment          : 1
+Name             : PFEIFFER/ELKEMS
+Type             : ADT
+FOP              : Invoice
+Base             : EUR 354.00
+Taxes            : 30.52
+Total            : EUR 384.52

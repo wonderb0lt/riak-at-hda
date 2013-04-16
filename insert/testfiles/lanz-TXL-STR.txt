@@ -1,0 +1,57 @@
+E-TICKET -  Galileo Reference: 00D3N0
+
+    Passenger(s):
+    LANZ/BERNHARDMR
+
+FLIGHT: Berlin to Stuttgart (4U2015) Vendor Locator:
+   Date:      April 08, 2013 (Mon)
+   Departs:   08:20 hrs
+   Airline:   Germanwings
+   Arrives:   09:35 hrs
+   Flight:    4U2015 (operated by Germanwings)
+   From:      Berlin,  Germany
+   Airport:   TXL - Tegel Airport, Terminal info not found
+   To:        Stuttgart,  Germany
+   Airport:   STR - Stuttgart Arpt, Terminal 3
+   Class:     Economy (W)
+   Baggage:   ADT 1PC
+   Stops:     Non-stop
+   Duration:  01:15
+   Status:    Confirmed
+   Aircraft:  Airbus Industrie A319
+   Service(s):
+      Ticket Numbers (E-tickets) -  2203272401000C1
+   E-ticket(s):
+      LANZ/BERNHARDMR: 220 3272 401000
+
+FLIGHT: Stuttgart to Berlin (4U8005) Vendor Locator:
+   Date:      April 12, 2013 (Fri)
+   Departs:   16:55 hrs
+   Airline:   Germanwings
+   Arrives:   18:05 hrs
+   Flight:    4U8005 (operated by Germanwings)
+   From:      Stuttgart,  Germany
+   Airport:   STR - Stuttgart Arpt, Terminal 3
+   To:        Berlin,  Germany
+   Airport:   TXL - Tegel Airport, Terminal info not found
+   Class:     Economy (V)
+   Baggage:   ADT 1PC
+   Stops:     Non-stop
+   Duration:  01:10
+   Status:    Confirmed
+   Aircraft:  Airbus Industrie A319
+   Service(s):
+      Ticket Numbers (E-tickets) -  2203272401000C2
+   E-ticket(s):
+      LANZ/BERNHARDMR: 220 3272 401000
+
+FARES:
+
+Segment          : 1, 2
+Name             : LANZ/BERNHARDMR
+Type             : ADT
+FOP              : INVOICE
+Base             : EUR 269.00
+Taxes            : 57.22
+Total            : EUR 326.22
+
