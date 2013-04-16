@@ -5,7 +5,8 @@ def parse(s):
 	lines = s.split('\r\n')
 	return {
 		'id': split_and_strip(lines, 0),
-		'passengers': parse_passengers(lines)
+		'passengers': parse_passengers(lines),
+		'flights': []
 	}
 
 def split_and_strip(lines, idx):
@@ -19,6 +20,7 @@ def parse_passengers(lines):
 		passengers.append([{name: _passenger_type(name)} for name in line.split(' ') if len(name) > 0]) # Pretty verbose!
 
 	return list(itertools.chain(*passengers))
+
 def _passenger_type(name):
 	if name[-3:] == 'CHD':
 		return 1
