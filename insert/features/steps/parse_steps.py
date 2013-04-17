@@ -22,13 +22,13 @@ def check_field(ctx, key, value):
 @then('passengers should include {name} ({persontype})')
 def check_passenger(ctx, name, persontype):
 	assert_that(ctx.parsed, has_key('passengers'))
-	assert_that(ctx.parsed['passengers'], contains({name: int(persontype)}))
+	assert_that(ctx.parsed['passengers'], has_item({name: int(persontype)}))
 
-@then('flight {n} has field {field} with value {value}')
+@then('flight {n} has field "{field}" with value "{value}"')
 def check_flight_field(ctx, n, field, value):
 	assert_that(ctx.parsed, has_key('flights'))
 	assert_that(ctx.parsed['flights'], instance_of(list))
-	assert_that(ctx.parsed['flights'], has_length(int(n)+1))
+	assert_that(ctx.parsed['flights'], has_length(greater_than_or_equal_to(int(n)+1)))
 
 	flight = ctx.parsed['flights'][int(n)]
 	assert_that(flight, has_key(field))
