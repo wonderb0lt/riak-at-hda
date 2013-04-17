@@ -1,12 +1,12 @@
 #!/usr/bin/python
 import itertools
-
+import re
 def parse(s):
 	lines = s.split('\r\n')
 	return {
 		'id': split_and_strip(lines, 0),
 		'passengers': parse_passengers(lines),
-		'flights': []
+		'flights': list(parse_flights(lines))
 	}
 
 def split_and_strip(lines, idx):
@@ -28,3 +28,15 @@ def _passenger_type(name):
 		return 2
 	else:
 		return 0
+
+def regex(line, regex, no=0):
+	return re.findall(regex, line)[no]
+
+def parse_flights(lines):
+	flight_starts = [idx for idx, line in enumerate(lines) if line[:6] == 'FLIGHT']
+
+	for flight_section_start in flight_starts:
+		yield {
+			'id': regex(lines[flight_section_start], r'^FLIGHT:.+ \((.+)\) .+$'),
+			'vendor_locator': regex(lines[flight_section_start], r'Vendor Locator: (.+)')
+		}
