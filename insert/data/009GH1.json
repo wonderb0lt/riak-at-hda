@@ -1,83 +1,72 @@
 {
-"BookingID": "009GH1",
-"Passangers":["MALLIK/SANTANUMR"],
-"Flights":[
-{
-	"FlightID": "LX4554",
-	"Departs":{
-		"Date": "2013-04-02",
-		"Time": "10:35"},
-	"Arrives":{
-		"Date": "2013-04-02",
-		"Time": "11:50"
-	},
-	"Airline": "SWISS",
-	"From":{
-		"Country": "Switzerland",
-		"City": "Geneva",
-		"AirportShort": "GVA",
-		"AirportName": "Geneve Cointrin",
-		"Terminal": "M"
-	},
-	"To": {
-		"Country": "Belgium",
-		"City": "Brussels",
-		"AirportShort":"BRU",
-		"AirportName": "Brussels National Arpt",
-		"Terminal": ""
-	},
-	"Class": "Economy",
-	"Baggage": "ADT 1PC",
-	"Stops": "Non-Stop",
-	"Duration": "01:15",
-	"Status": "Confirmed",
-	"Aircraft": "Airbus Industrie A320-100/200",
-	"E-Ticket": "724327240100C1"
-	},
-	{
-	"FlightID": "LX4563",
-	"Departs":{
-		"Date": "2013-04-05",
-		"Time": "19:20"
+	"id": "009GH1",
+	"passengers": ["MALLIK/SANTANUMR"],
+	"flights": [
+		{
+			"id": "LX4554",
+			"departure": 1364898900,
+			"arrival": 1364903400,
+			"airline": "SWISS",
+			"from":{
+				"country": "Switzerland",
+				"city": "Geneva",
+				"iata": "GVA",
+				"airport": "Geneve Cointrin",
+				"terminal": "M"
+			},
+			"To": {
+				"country": "Belgium",
+				"city": "Brussels",
+				"iata":"BRU",
+				"airport": "Brussels National Arpt",
+				"terminal": ""
+			},
+			"class": "Economy",
+			"baggage": "ADT 1PC",
+			"stops": [],
+			"duration": 4500,
+			"status": "Confirmed",
+			"aircraft": "Airbus Industrie A320-100/200",
+			"eTicket": "724327240100C1"
 		},
-	"Arrives":{
-		"Date": "2013-04-05",
-		"Time": "20:35"
-	},
-	"Airline": "SWISS",
-	"From": {
-		"Country": "Belgium",
-		"City": "Brussels",
-		"AirportShort":"BRU",
-		"AirportName": "Brussels National Arpt",
-		"Terminal": ""
-	},
-	"To":{
-		"Country": "Switzerland",
-		"City": "Geneva",
-		"AirportShort": "GVA",
-		"AirportName": "Geneve Cointrin",
-		"Terminal": "Terminal M"
-	},
+		{
+			"id": "LX4563",
+			"departure": 1365189600,
+			"arrival": 1365194100,
+			"Airline": "SWISS",
+			"from": {
+				"country": "Belgium",
+				"city": "Brussels",
+				"iata":"BRU",
+				"airport": "Brussels National Arpt",
+				"terminal": ""
+			},
+			"to":{
+				"country": "Switzerland",
+				"city": "Geneva",
+				"iata": "GVA",
+				"airport": "Geneve Cointrin",
+				"terminal": "Terminal M"
+			},
 
-	"Class": "Economy",
-	"Baggage": "ADT 1PC",
-	"Stops": "Non-Stop",
-	"Duration": "01:15",
-	"Status": "Confirmed",
-	"Aircraft": "Airbus Industrie A319",
-	"E-Ticket": "7243272401000C2"
-	}
+			"class": "Economy",
+			"baggage": "ADT 1PC",
+			"stops": "Non-Stop",
+			"duration": 4500,
+			"status": "Confirmed",
+			"aircraft": "Airbus Industrie A319",
+			"eTicket": "7243272401000C2"
+		}
 	],
 	
-"Fares":{
-	"Segment": "1, 2",
-	"Name": "MALLIK/SANTANUMR",
-	"Type": "ADT",
-	"FOP": "Invoice",
-	"Base": 122,
-	"Taxes":118.02, 
-	"Total": 240.02,
-	"Currency": "EUR"
-}
+	"Fares":{
+		"segment": "1, 2",
+		"name": "MALLIK/SANTANUMR",
+		"type": "ADT",
+		"fop": "Invoice",
+		"base": 122,
+		"taxes":118.02, 
+		"total": 240.02,
+		"currency": "EUR"
+	}
 }

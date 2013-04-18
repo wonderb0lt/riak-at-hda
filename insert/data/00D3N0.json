@@ -1,83 +1,72 @@
 {
-"BookingID": "00D3N0",
-"Passangers":["LANZ/BERNHARDMR"],
-"Flights":[{
-	"FlightID": "4U2015",
-	"Departs":{
-		"Date": "2013-04-08",
-		"Time": "08:20"},
-	"Arrives":{
-		"Date": "2013-04-08",
-		"Time": "09:35"
-	},
-	"Airline": "Germanwings",
-	"From":{
-		"Country": "Germany",
-		"City": "Berlin",
-		"AirportShort":"TXL",
-		"AirportName": "Tegel Airport",
-		"Terminal": ""
-	},
-	"To": {
-		"Country": "Germany",
-		"City": "Stuttgart",
-		"AirportShort":"STR",
-		"AirportName": "Stuttgart Arpt",
-		"Terminal": "3"
-	},
-	"Class": "Economy",
-	"Baggage": "ADT 1PC",
-	"Stops": "Non-Stop",
-	"Duration": "01:15",
-	"Status": "Confirmed",
-	"Aircraft": "Airbus Industrie A319",
-	"E-Ticket": "2203272401000C1"
-	},
-	{
-	"FlightID": "4U8005",
-	"Departs":{
-		"Date": "2013-04-12",
-		"Time": "16:55"
+	"id": "00D3N0",
+	"passengers":["LANZ/BERNHARDMR"],
+	"flights": [
+		{
+			"id": "4U2015",
+			"departure": 1365409200,
+			"arrival": 1365413700,
+			"airline": "Germanwings",
+			"from":{
+				"country": "Germany",
+				"city": "Berlin",
+				"iata":"TXL",
+				"airport": "Tegel Airport",
+				"terminal": ""
+			},
+			"To": {
+				"Country": "Germany",
+				"City": "Stuttgart",
+				"iata":"STR",
+				"airport": "Stuttgart Arpt",
+				"terminal": "3"
+			},
+			"class": "Economy",
+			"baggage": "ADT 1PC",
+			"Stops": "Non-Stop",
+			"duration": 3600,
+			"status": "Confirmed",
+			"aircraft": "Airbus Industrie A319",
+			"eTicket": "2203272401000C1"
 		},
-	"Arrives":{
-		"Date": "2013-04-12",
-		"Time": "18:05"
-	},
-	"Airline": "Germanwings",
-	"From": {
-		"Country": "Germany",
-		"City": "Stuttgart",
-		"AirportShort":"STR",
-		"AirportName": "Stuttgart Arpt",
-		"Terminal": "3"
-	},
-	"To":{
-		"Country": "Germany",
-		"City": "Berlin",
-		"AirportShort":"TXL",
-		"AirportName": "Tegel Airport",
-		"Terminal": ""
-	},
+		{
+			"id": "4U8005",
+			"departure": 1365785700,
+			"arrival": 1365789900,
+			"airline": "Germanwings",
+			"from": {
+				"country": "Germany",
+				"city": "Stuttgart",
+				"iata":"STR",
+				"airport": "Stuttgart Arpt",
+				"terminal": "3"
+			},
+			"to":{
+				"country": "Germany",
+				"city": "Berlin",
+				"iata":"TXL",
+				"airport": "Tegel Airport",
+				"terminal": ""
+			},
 
-	"Class": "Economy",
-	"Baggage": "ADT 1PC",
-	
-	"Stops": "Non-Stop",
-	"Duration": "01:10",
-	"Status": "Confirmed",
-	"Aircraft": "Airbus Industrie A319",
-	"E-Ticket": "2203272401000C2"
-	}
+			"class": "Economy",
+			"baggage": "ADT 1PC",
+			"Stops": "Non-Stop",
+			"duration": 4200,
+			"status": "Confirmed",
+			"aircraft": "Airbus Industrie A319",
+			"eTicket": "2203272401000C2"
+		}
 	],
-	
-"Fares":{
-	"Segment": "1, 2",
-	"Name": "LANZ/BERNHARDMR",
-	"Type": "ADT",
-	"FOP": "Invoice",
-	"Base": 269,
-	"Taxes":57.22, 
-	"Total": 326.22,
-	"Currency": "EUR"
-}
+		
+	"fares":{
+		"segment": "1, 2",
+		"name": "LANZ/BERNHARDMR",
+		"type": "ADT",
+		"fop": "Invoice",
+		"base": 269,
+		"taxes":57.22, 
+		"total": 326.22,
+		"currency": "EUR"
+	}
 }
