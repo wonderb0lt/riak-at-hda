@@ -1,6 +1,6 @@
 {
 	"id": "00JZCO",
-	"passengers":["KURKA/MAXMR"],
+	"passengers":[{"KURKA/MAXMR":0}],
 	"flights":[
 		{
 			"id": "AB6113",

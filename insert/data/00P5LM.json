@@ -1,6 +1,6 @@
 {
 	"id": "00P5LM",
-	"passengers":["RAUSS/ARMINMR"],
+	"passengers":[{"RAUSS/ARMINMR": 0}],
 	"flights":[
 		{
 			"id": "LH3220",

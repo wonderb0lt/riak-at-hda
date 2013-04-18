@@ -1,6 +1,6 @@
 {
 	"id": "00D3N0",
-	"passengers":["LANZ/BERNHARDMR"],
+	"passengers":[{"LANZ/BERNHARDMR": 0}],
 	"flights": [
 		{
 			"id": "4U2015",

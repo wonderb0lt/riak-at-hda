@@ -1,6 +1,6 @@
 {
 	"id": "009GH1",
-	"passengers": ["MALLIK/SANTANUMR"],
+	"passengers": [{"MALLIK/SANTANUMR": 0}],
 	"flights": [
 		{
 			"id": "LX4554",
