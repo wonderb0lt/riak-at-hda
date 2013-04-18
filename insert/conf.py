@@ -1,6 +1,6 @@
 
 host = 'localhost'
-port = 8087
+port = 8098
 
 buckets = {
 	'flights': 'flights',
