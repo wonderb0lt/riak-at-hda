@@ -1,0 +1,70 @@
+{
+"BookingID": "00JZCO",
+"Passangers":["KURKA/MAXMR"],
+"Flights":[
+{
+	"FlightID": "AB6113",
+	"Departs":{
+		"Date": "2013-04-02",
+		"Time": "08:10"},
+	"Arrives":{
+		"Date": "2013-04-02",
+		"Time": "09:10"
+	},
+	"Airline": "Air Berlin",
+	"From":{
+		"Country": "Germany",
+		"City": "Cologne",
+		"AirportShort":"CGN",
+		"AirportName": "Koeln Bonn Arpt",
+		"Terminal": "2"
+	},
+	"To": {
+		"Country": "Germany",
+		"City": "Munich",
+		"AirportShort":"MUC",
+		"AirportName": "Munich Intl Arpt",
+		"Terminal": "1"
+	},
+	"Class": "Economy",
+	"Baggage": "ADT 1PC",
+	"Stops": "Non-Stop",
+	"Duration": "01:00",
+	"Status": "Confirmed",
+	"Aircraft": "Boeing 737-700"
+	},
+	{
+	"FlightID": "AB6124",
+	"Departs":{
+		"Date": "2013-04-04",
+		"Time": "18:45"
+		},
+	"Arrives":{
+		"Date": "2013-04-04",
+		"Time": "19:55"
+	},
+	"Airline": "Air Berlin",
+	"From": {
+		"Country": "Germany",
+		"City": "Munich",
+		"AirportShort":"MUC",
+		"AirportName": "Munich Intl Arpt",
+		"Terminal": "1"
+	},
+	"To":{
+		"Country": "Germany",
+		"City": "Cologne",
+		"AirportShort":"CGN",
+		"AirportName": "Koeln Bonn Arpt",
+		"Terminal": "2"
+	},
+
+	"Class": "Economy",
+	"Baggage": "ADT 1PC",
+	"Stops": "Non-Stop",
+	"Duration": "01:10",
+	"Status": "Confirmed",
+	"Aircraft": "Boeing 737-700"
+	}
+	]
+}

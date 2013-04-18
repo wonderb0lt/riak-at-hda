@@ -1,0 +1,83 @@
+{
+"BookingID": "00D3N0",
+"Passangers":["LANZ/BERNHARDMR"],
+"Flights":[{
+	"FlightID": "4U2015",
+	"Departs":{
+		"Date": "2013-04-08",
+		"Time": "08:20"},
+	"Arrives":{
+		"Date": "2013-04-08",
+		"Time": "09:35"
+	},
+	"Airline": "Germanwings",
+	"From":{
+		"Country": "Germany",
+		"City": "Berlin",
+		"AirportShort":"TXL",
+		"AirportName": "Tegel Airport",
+		"Terminal": ""
+	},
+	"To": {
+		"Country": "Germany",
+		"City": "Stuttgart",
+		"AirportShort":"STR",
+		"AirportName": "Stuttgart Arpt",
+		"Terminal": "3"
+	},
+	"Class": "Economy",
+	"Baggage": "ADT 1PC",
+	"Stops": "Non-Stop",
+	"Duration": "01:15",
+	"Status": "Confirmed",
+	"Aircraft": "Airbus Industrie A319",
+	"E-Ticket": "2203272401000C1"
+	},
+	{
+	"FlightID": "4U8005",
+	"Departs":{
+		"Date": "2013-04-12",
+		"Time": "16:55"
+		},
+	"Arrives":{
+		"Date": "2013-04-12",
+		"Time": "18:05"
+	},
+	"Airline": "Germanwings",
+	"From": {
+		"Country": "Germany",
+		"City": "Stuttgart",
+		"AirportShort":"STR",
+		"AirportName": "Stuttgart Arpt",
+		"Terminal": "3"
+	},
+	"To":{
+		"Country": "Germany",
+		"City": "Berlin",
+		"AirportShort":"TXL",
+		"AirportName": "Tegel Airport",
+		"Terminal": ""
+	},
+
+	"Class": "Economy",
+	"Baggage": "ADT 1PC",
+	
+	"Stops": "Non-Stop",
+	"Duration": "01:10",
+	"Status": "Confirmed",
+	"Aircraft": "Airbus Industrie A319",
+	"E-Ticket": "2203272401000C2"
+	}
+	],
+	
+"Fares":{
+	"Segment": "1, 2",
+	"Name": "LANZ/BERNHARDMR",
+	"Type": "ADT",
+	"FOP": "Invoice",
+	"Base": 269,
+	"Taxes":57.22, 
+	"Total": 326.22,
+	"Currency": "EUR"
+}
+}

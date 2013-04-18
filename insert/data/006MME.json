@@ -1,0 +1,49 @@
+{
+"BookingID": "006MME",
+"Passangers":["PFEIFFER/ELKEMS"],
+"Flights":[
+{
+	"FlightID": "AF7542",
+	"Departs":{
+		"Date": "2013-03-27",
+		"Time": "08:35"},
+	"Arrives":{
+		"Date": "2013-03-27",
+		"Time": "09:50"
+	},
+	"Airline": "Air France",
+	"From":{
+		"Country": "France",
+		"City": "Paris",
+		"AirportShort":"ORY",
+		"AirportName": "Orly Arpt",
+		"Terminal": "W"
+	},
+	"To": {
+		"Country": "France",
+		"City": "Montpellier",
+		"AirportShort":"MPL",
+		"AirportName": "Frejorgues Arpt",
+		"Terminal": ""
+	},
+	"Class": "Economy",
+	"Baggage": "ADT 2PC",
+	"Stops": "Non-Stop",
+	"Duration": "01:15",
+	"Status": "Confirmed",
+	"Aircraft": "Airbus Industrie A321",
+	"E-Ticket": "0573272401000C1"
+	}
+	],
+		
+"Fares":{
+	"Segment": "1",
+	"Name": "PFEIFFER/ELKEMS",
+	"Type": "ADT",
+	"FOP": "Invoice",
+	"Base": 354,
+	"Taxes":30.52, 
+	"Total": 384.52,
+	"Currency": "EUR"
+}
+}

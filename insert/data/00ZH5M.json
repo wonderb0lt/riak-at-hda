@@ -1,0 +1,162 @@
+{
+"BookingID": "00ZH5M",
+"Passangers":["RAUSS/ARMINMR"],
+"Flights":[{
+	"FlightID": "LH2023",
+	"Departs":{
+		"Date": "2013-04-04",
+		"Time": "06:50"},
+	"Arrives":{
+		"Date": "2013-04-04",
+		"Time": "08:00"
+	},
+	"Airline": "Lufthansa",
+	"From":{
+	
+		"Country": "Germany",
+		"City": "Dusseldorf",
+		"AirportShort":"DUS",
+		"AirportName": "Dusseldorf Arpt",
+		"Terminal": ""
+	},
+	"To": {
+		"Country": "Germany",
+		"City": "Munich",
+		"AirportShort":"MUC",
+		"AirportName": "Munich Intl Arpt",
+		"Terminal": "2"
+	},
+	"Class": "Economy",
+	"Baggage": "ADT 1PC",
+	"Stops": "Non-Stop",
+	"Duration": "01:10",
+	"Status": "Confirmed",
+	"Aircraft": "Airbus Industrie A320-100/200",
+	"E-Ticket": "2203272401000C1",
+	"Seats":{
+		"Number":"07D",
+		"Non-smoking":true
+	}
+	},	
+    {
+	"FlightID": "LH2214",
+	"Departs":{
+		"Date": "2013-04-04",
+		"Time": "09:00"},
+	"Arrives":{
+		"Date": "2013-04-04",
+		"Time": "10:50"
+	},
+	"Airline": "Lufthansa",
+	"From": {
+		"Country": "Germany",
+		"City": "Munich",
+		"AirportShort":"MUC",
+		"AirportName": "Munich Intl Arpt",
+		"Terminal": "2"
+	},
+	"To":{
+		"Country": "France",
+		"City": "Toulouse",
+		"AirportShort":"TLS",
+		"AirportName": "Blagnac Arpt",
+		"Terminal": ""
+	},
+
+	"Class": "Economy",
+	"Baggage": "ADT 1PC",
+	"Stops": "Non-Stop",
+	"Duration": "01:50",
+	"Status": "Confirmed",
+	"Aircraft": "Canadair Regional Jet 900",
+	"E-Ticket": "2203272401000C2",
+	"Seats":{
+		"Number":"08C",
+		"Non-smoking":true
+	}
+	},
+   {
+	"FlightID": "LH2219",
+	"Departs":{
+		"Date": "2013-04-04",
+		"Time": "18:25"},
+	"Arrives":{
+		"Date": "2013-04-04",
+		"Time": "20:05"
+	},
+	"Airline": "Lufthansa",
+	"From":{
+		"Country": "France",
+		"City": "Toulouse",
+		"AirportShort":"TLS",
+		"AirportName": "Blagnac Arpt",
+		"Terminal": ""
+	},
+	"To": {
+		"Country": "Germany",
+		"City": "Munich",
+		"AirportShort":"MUC",
+		"AirportName": "Munich Intl Arpt",
+		"Terminal": "2"
+	},
+	"Class": "Business",
+	"Baggage": "ADT 2PC",
+	"Stops": "Non-Stop",
+	"Duration": "01:40",
+	"Status": "Confirmed",
+	"Aircraft": "Canadair Regional Jet 900",
+	"E-Ticket": "2203272401000C3",
+	"Seats":{
+		"Number":"02D",
+		"Non-smoking":true
+	}
+	},
+    {
+	"FlightID": "LH2024",
+	"Departs":{
+		"Date": "2013-04-04",
+		"Time": "21:00"},
+	"Arrives":{
+		"Date": "2013-04-04",
+		"Time": "22:10"
+	},
+	"Airline": "Lufthansa",
+	"From": {
+		"Country": "Germany",
+		"City": "Munich",
+		"AirportShort":"MUC",
+		"AirportName": "Munich Intl Arpt",
+		"Terminal": "2"
+	},
+	"To":{
+		"Country": "Germany",
+		"City": "Dusseldorf",
+		"AirportShort":"DUS",
+		"AirportName": "Dusseldorf Arpt",
+		"Terminal": ""
+	},
+	"Class": "Business",
+	"Baggage": "ADT 2PC",
+	"Stops": "Non-Stop",
+	"Duration": "01:10",
+	"Status": "Confirmed",
+	"Aircraft": "Airbus Industrie A320-100/200",
+	"E-Ticket": "2203272401000C4",
+	"Seats":{
+		"Number":"02C",
+		"Non-smoking":true
+	}
+	}
+	],	
+		
+"Fares":{
+	"Segment": "1,2,3,4",
+	"Name": "RAUSS/ARMINMR",
+	"Type": "ADT",
+	"FOP": "Invoice",
+	"Base": 667,
+	"Taxes":260.91, 
+	"Total": 927.91,
+	"Currency": "EUR"
+}
+}

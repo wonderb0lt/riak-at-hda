@@ -1,0 +1,82 @@
+{
+"BookingID": "00P5LM",
+"Passangers":["RAUSS/ARMINMR"],
+"Flights":[
+{
+	"FlightID": "LH3220",
+	"Departs":{
+		"Date": "2013-04-11",
+		"Time": "11:10"},
+	"Arrives":{
+		"Date": "2013-04-11",
+		"Time": "12:15"
+	},
+	"Airline": "Lufthansa",
+	"From":{
+		"Country": "Germany",
+		"City": "Dusseldorf",
+		"AirportShort":"DUS",
+		"AirportName": "Dusseldorf Arpt",
+		"Terminal": ""
+	},
+	"To": {
+		"Country": "France",
+		"City": "Paris",
+		"AirportShort":"CDG",
+		"AirportName": "Charles De Gaulle Intl Arpt",
+		"Terminal": "1"
+	},
+	"Class": "Economy",
+	"Baggage": "ADT 1PC",
+	"Stops": "Non-Stop",
+	"Duration": "01:05",
+	"Status": "Confirmed",
+	"Aircraft": "Canadair Regional Jet 900",
+	"E-Ticket": "2203272401000C1"
+	},	
+	{
+	"FlightID": "LH3223",
+	"Departs":{
+		"Date": "2013-04-11",
+		"Time": "17:50"},
+	"Arrives":{
+		"Date": "2013-04-11",
+		"Time": "18:55"
+	},
+	"Airline": "Lufthansa",
+	"From": {
+		"Country": "France",
+		"City": "Paris",
+		"AirportShort":"CDG",
+		"AirportName": "Charles De Gaulle Intl Arpt",
+		"Terminal": "1"
+	},
+	"To":{
+		"Country": "Germany",
+		"City": "Dusseldorf",
+		"AirportShort":"DUS",
+		"AirportName": "Dusseldorf Arpt",
+		"Terminal": ""
+	},
+
+	"Class": "Economy",
+	"Baggage": "ADT 1PC",
+	"Stops": "Non-Stop",
+	"Duration": "01:05",
+	"Status": "Confirmed",
+	"Aircraft": "Canadair Regional Jet 900",
+	"E-Ticket": "2203272401000C2"
+	}
+	],
+		
+"Fares":{
+	"Segment": "1,2",
+	"Name": "RAUSS/ARMINMR",
+	"Type": "ADT",
+	"FOP": "Invoice",
+	"Base": 303,
+	"Taxes":135.71, 
+	"Total": 438.71,
+	"Currency": "EUR"
+}
+}
