@@ -1,6 +1,28 @@
 {
 	"id": "009GH1",
-	"passengers": [{"MALLIK/SANTANUMR": 0}],
+
+	"personalfightdata": {
+		"LX4554": {
+			"eTicket": "724327240100C1",
+			"class": "Economy",
+			"baggage": "ADT 1PC"
+		},
+		"LX4563": {
+			"eTicket": "7243272401000C2",
+			"class": "Economy",
+			"baggage": "ADT 1PC"
+		}
+	}, 
+
+	"passengers": [
+		{	
+			"id": "MALLIK/SANTANUMR",
+		 	"type": 0,
+		 	"name": "Mallik",
+		 	"surname": "Satunamu"
+		 }
+	],
+
 	"flights": [
 		{
 			"id": "LX4554",
@@ -21,13 +43,10 @@
 				"airport": "Brussels National Arpt",
 				"terminal": ""
 			},
-			"class": "Economy",
-			"baggage": "ADT 1PC",
 			"stops": [],
 			"duration": 4500,
 			"status": "Confirmed",
 			"aircraft": "Airbus Industrie A320-100/200",
-			"eTicket": "724327240100C1"
 		},
 		{
 			"id": "LX4563",
@@ -48,14 +67,11 @@
 				"airport": "Geneve Cointrin",
 				"terminal": "Terminal M"
 			},
-
-			"class": "Economy",
-			"baggage": "ADT 1PC",
 			"stops": [],
 			"duration": 4500,
 			"status": "Confirmed",
 			"aircraft": "Airbus Industrie A319",
-			"eTicket": "7243272401000C2"
+			
 		}
 	],
 	
