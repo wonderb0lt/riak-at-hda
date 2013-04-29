@@ -1,7 +1,7 @@
 {
     schema,
     [
-        {version, "1.1"},
+        {version, "1.2"},
         %%{default_field, "title"},
         {default_op, "or"},
         {n_val, 3},
@@ -10,48 +10,53 @@
     [
 
         {field, [
-            {name, "FaersID"},
+            {name, "id"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
 		   {type, string}
+        ]},
+
+         {field, [
+            {name, "type"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+           {type, string}
         ]},
 
         {field, [
-            {name, "Service"},
+            {name, "fop"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
-		   {type, string}
+           {type, string}
         ]},
 
         {field, [
-            {name, "E-ticket"},
+            {name, "base"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
-		   {type, string}
+           {type, string}
         ]},
 
         {field, [
-            {name, "Seat"},
+            {name, "taxes"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
-		   {type, string}
+           {type, string}
         ]},
 
         {field, [
-            {name, "FARESID"},
+            {name, "total"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
-		   {type, string}
+           {type, string}
         ]},
 
         {field, [
-            {name, "Baggage"},
+            {name, "segment"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
-		   {type, string}
+           {type, string}
         ]},
+
 
         {field, [
-            {name, "Class"},
+            {name, "name"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
-		   {type, string}
+           {type, string}
         ]},
-
-
     %% A dynamic field. Catches any remaining fields in the
         %% document, and uses the analyzer_factory setting defined
         %% above for the schema.

@@ -1,7 +1,7 @@
 {
     schema,
     [
-        {version, "1.1"},
+        {version, "1.2"},
         %%{default_field, "title"},
         {default_op, "or"},
         {n_val, 3},
@@ -9,32 +9,32 @@
     ],
     [
 
+
         {field, [
-            {name, "AirportID"},
-            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
-		   {type, string}
-        ]},
-        {field, [
-            {name, "Airport"},
+            {name, "id"}, %% What is to say against id? We already know this is a passenger...
+            %% Alternative to the key = id, we could use for example PFEIFFER/ELKEMS here.
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
 		   {type, string}
         ]},
 
         {field, [
-            {name, "City"},
+            {name, "surname"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
 		   {type, string}
         ]},
 
         {field, [
-            {name, "Terminal"},
+            {name, "name"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
 		   {type, string}
         ]},
 
-        %% A dynamic field. Catches any remaining fields in the
-        %% document, and uses the analyzer_factory setting defined
-        %% above for the schema.
+        {field, [
+            {name, "type"}, %% i.e. adult, child etc. (0 = Adult, 1 = Child, 2 = Infant)
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+           {type, integer}
+        ]},
+
         {dynamic_field, [
             {name, "*"}
         ]}

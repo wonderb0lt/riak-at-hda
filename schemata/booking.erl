@@ -1,7 +1,7 @@
 {
     schema,
     [
-        {version, "1.1"},
+        {version, "1.2"},
         %%{default_field, "title"},
         {default_op, "or"},
         {n_val, 3},
@@ -11,27 +11,29 @@
 
 
         {field, [
-            {name, "PassID"},
+            {name, "id"}, %% ie, the galileo number
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
-		   {type, string}
+		   {type, string} 
         ]},
 
         {field, [
-            {name, "Surename"},
+            {name, "flights"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
-		   {type, string}
+		   {type, string} %% Again, a list, for example ['TG921', 'TG920']
         ]},
 
         {field, [
-            {name, "name"},
+            {name, "passengers"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
-		   {type, string}
+           {type, string} %% A list of passengers (with their randomly created id)
         ]},
 
+        {field, [
+            {name, "fares"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+		   {type, string} %% list of fares (random ids)
+        ]},
 
-    %% A dynamic field. Catches any remaining fields in the
-        %% document, and uses the analyzer_factory setting defined
-        %% above for the schema.
         {dynamic_field, [
             {name, "*"}
         ]}

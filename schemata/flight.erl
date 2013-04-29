@@ -1,7 +1,7 @@
 {
     schema,
     [
-        {version, "1.1"},
+        {version, "1.2"},
         %%{default_field, "title"},
         {default_op, "or"},
         {n_val, 3},
@@ -10,67 +10,55 @@
     [
 
         {field, [
-            {name, "FLIGHTID"},
+            {name, "id"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
 		   {type, string}
         ]},
 
         {field, [
-            {name, "FLIGHT"},
+            {name, "booking"}, %% Reference to booking key?
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
 		   {type, string}
         ]},
 
         {field, [
-            {name, "Vendor-Locator"},
+            {name, "vendor"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
 		   {type, string}
         ]},
 
         {field, [
-            {name, "Date"},
+            {name, "date"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
 		   {type, date}
         ]},
 
         {field, [
-            {name, "Departs"},
+            {name, "departure"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
 		   {type, date}
         ]},
 
         {field, [
-            {name, "Airline"},
+            {name, "arrival"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+           {type, date}
+        ]},
+
+        {field, [
+            {name, "airline"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
 		   {type, string}
         ]},
 
         {field, [
-            {name, "Arrives"},
+            {name, "from"}, %% Reference to airport key
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
-		   {type, date}
+		      {type, string}
         ]},
 
         {field, [
-            {name, "FLIGHTID"},
-            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
-		   {type, string}
-        ]},
-
-        {field, [
-            {name, "Flight"},
-            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
-		   {type, string}
-        ]},
-
-        {field, [
-            {name, "Airport-From"},
-            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
-		   {type, string}
-        ]},
-
-        {field, [
-            {name, "Airport-To"},
+            {name, "to"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
 		   {type, string}
         ]},
@@ -79,32 +67,61 @@
         {field, [
             {name, "Stops"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
-		   {type, string}
+		   {type, string} %% list of stops. since we don't know what stops look like, no idea.
         ]},
 
 
         {field, [
-            {name, "Duration"},
+            {name, "duration"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
 		   {type, date}
         ]},
 
 
         {field, [
-            {name, "Status"},
+            {name, "status"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
 		   {type, string}
         ]},
 
 
         {field, [
-            {name, "Aircraft"},
+            {name, "aircraft"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
 		   {type, string}
         ]},
 
+        {field, [
+            {name, "eTicket"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+           {type, string}
+        ]},
 
 
+        {field, [
+            {name, "seat"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+            {type, string}
+        ]},
+
+
+        {field, [
+            {name, "services"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+           {type, string} %% list of strings
+        ]},
+
+        {field, [
+            {name, "baggage"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+           {type, string}
+        ]},
+
+        {field, [
+            {name, "class"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+           {type, string}
+        ]},
 
 
         %% A dynamic field. Catches any remaining fields in the
