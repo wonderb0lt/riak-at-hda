@@ -1,0 +1,117 @@
+{
+    schema,
+    [
+        {version, "1.1"},
+        %%{default_field, "title"},
+        {default_op, "or"},
+        {n_val, 3},
+        {analyzer_factory, {erlang, text_analyzers, whitespace_analyzer_factory}}
+    ],
+    [
+
+        {field, [
+            {name, "FLIGHTID"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+		   {type, string}
+        ]},
+
+        {field, [
+            {name, "FLIGHT"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+		   {type, string}
+        ]},
+
+        {field, [
+            {name, "Vendor-Locator"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+		   {type, string}
+        ]},
+
+        {field, [
+            {name, "Date"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+		   {type, date}
+        ]},
+
+        {field, [
+            {name, "Departs"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+		   {type, date}
+        ]},
+
+        {field, [
+            {name, "Airline"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+		   {type, string}
+        ]},
+
+        {field, [
+            {name, "Arrives"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+		   {type, date}
+        ]},
+
+        {field, [
+            {name, "FLIGHTID"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+		   {type, string}
+        ]},
+
+        {field, [
+            {name, "Flight"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+		   {type, string}
+        ]},
+
+        {field, [
+            {name, "Airport-From"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+		   {type, string}
+        ]},
+
+        {field, [
+            {name, "Airport-To"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+		   {type, string}
+        ]},
+
+
+        {field, [
+            {name, "Stops"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+		   {type, string}
+        ]},
+
+
+        {field, [
+            {name, "Duration"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+		   {type, date}
+        ]},
+
+
+        {field, [
+            {name, "Status"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+		   {type, string}
+        ]},
+
+
+        {field, [
+            {name, "Aircraft"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+		   {type, string}
+        ]},
+
+
+
+
+
+        %% A dynamic field. Catches any remaining fields in the
+        %% document, and uses the analyzer_factory setting defined
+        %% above for the schema.
+        {dynamic_field, [
+            {name, "*"}
+        ]}
+    ]
+}.

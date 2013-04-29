@@ -1,0 +1,39 @@
+{
+    schema,
+    [
+        {version, "1.1"},
+        %%{default_field, "title"},
+        {default_op, "or"},
+        {n_val, 3},
+        {analyzer_factory, {erlang, text_analyzers, whitespace_analyzer_factory}}
+    ],
+    [
+
+
+        {field, [
+            {name, "PassID"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+		   {type, string}
+        ]},
+
+        {field, [
+            {name, "Surename"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+		   {type, string}
+        ]},
+
+        {field, [
+            {name, "name"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
+		   {type, string}
+        ]},
+
+
+    %% A dynamic field. Catches any remaining fields in the
+        %% document, and uses the analyzer_factory setting defined
+        %% above for the schema.
+        {dynamic_field, [
+            {name, "*"}
+        ]}
+    ]
+}.
