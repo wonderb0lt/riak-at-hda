@@ -51,7 +51,7 @@
 
 			"class": "Economy",
 			"baggage": "ADT 1PC",
-			"stops": "Non-Stop",
+			"stops": [],
 			"duration": 4500,
 			"status": "Confirmed",
 			"aircraft": "Airbus Industrie A319",
