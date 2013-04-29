@@ -21,11 +21,11 @@
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
 		   {type, string} %% Again, a list, for example ['TG921', 'TG920']
         ]},
-
+        
         {field, [
-            {name, "passengers"},
+            {name, "flightdata"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
-           {type, string} %% A list of passengers (with their randomly created id)
+           {type, string} %% Personal flight data, list of references, see personalflightdata.erl
         ]},
 
         {field, [
