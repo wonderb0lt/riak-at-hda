@@ -1,11 +1,14 @@
 {
-	"booking": {
-		"id": "006MME",
-		"flights": ["AF7542"],
-		"flightdata": ["006MME_AF7542"]
+	"id": "006MME",
+
+	"personalflightdata": {
+		"AF7542": {
+			"class": "Economy",
+			"baggage": "ADT 2PC"
+		}
 	},
 
-	"passengers":[
+	"passengers": [
 		{
 			"id": "PFEIFFER/ELKEMS", 
 			"type": 0,
@@ -14,45 +17,35 @@
 		}
 	],
 
-	"airports": {
-		"ORY": {
-			"country": "France",
-			"city": "Paris",
-			"iata":"ORY",
-			"airport": "Orly Arpt",
-			"terminals": ["W"]
-		},
-		"MPL": {
-			"country": "France",
-			"city": "Montpellier",
-			"iata":"MPL",
-			"airport": "Frejorgues Arpt",
-			"terminals": []
-		}
-	},
 
-	"flights": {
-		"AF7542": {
+	"flights": [
+		{
 			"id": "AF7542",
 			"departure": 1364373300,
 			"arrival": 1364377800,
 			"airline": "Air France",
 
-			"from": "ORY",
-			"to": "MPL",
+			"from": {
+				"country": "France",
+				"city": "Paris",
+				"iata":"ORY",
+				"airport": "Orly Arpt",
+				"terminals": ["W"]
+			},
+			"to": {
+				"country": "France",
+				"city": "Montpellier",
+				"iata":"MPL",
+				"airport": "Frejorgues Arpt",
+				"terminals": []
+			},
+
 			"stops": [],
 			"duration": 4500,
 			"status": "Confirmed",
 			"aircraft": "Airbus Industrie A321"
 		}
-	},
-
-	"personalflightdata": {
-		"006MME_AF7542": {
-			"class": "Economy",
-			"baggage": "ADT 2PC"
-		}
-	},
+	],
 
 	"fares": {
 		"segment": "1",
