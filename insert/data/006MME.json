@@ -1,37 +1,59 @@
 {
-	"id": "006MME",
-	"passengers":[{"PFEIFFER/ELKEMS": 0}],
-	"flights": [
+	"booking": {
+		"id": "006MME",
+		"flights": ["AF7542"],
+		"flightdata": ["006MME_AF7542"]
+	},
+
+	"passengers":[
 		{
+			"id": "PFEIFFER/ELKEMS", 
+			"type": 0,
+			"name": "Pfeiffer",
+			"surname": "Elke"
+		}
+	],
+
+	"airports": {
+		"ORY": {
+			"country": "France",
+			"city": "Paris",
+			"iata":"ORY",
+			"airport": "Orly Arpt",
+			"terminals": ["W"]
+		},
+		"MPL": {
+			"country": "France",
+			"city": "Montpellier",
+			"iata":"MPL",
+			"airport": "Frejorgues Arpt",
+			"terminals": []
+		}
+	},
+
+	"flights": {
+		"AF7542": {
 			"id": "AF7542",
 			"departure": 1364373300,
 			"arrival": 1364377800,
 			"airline": "Air France",
 
-			"from":{
-				"country": "France",
-				"city": "Paris",
-				"iata":"ORY",
-				"airport": "Orly Arpt",
-				"terminal": "W"
-			},
-			"to": {
-				"country": "France",
-				"city": "Montpellier",
-				"iata":"MPL",
-				"airport": "Frejorgues Arpt",
-				"terminal": ""
-			},
-			"class": "Economy",
-			"baggage": "ADT 2PC",
+			"from": "ORY",
+			"to": "MPL",
 			"stops": [],
 			"duration": 4500,
 			"status": "Confirmed",
-			"aircraft": "Airbus Industrie A321",
-			"eTicket": "0573272401000C1"
+			"aircraft": "Airbus Industrie A321"
 		}
-	],
-		
+	},
+
+	"personalflightdata": {
+		"006MME_AF7542": {
+			"class": "Economy",
+			"baggage": "ADT 2PC"
+		}
+	},
+
 	"fares": {
 		"segment": "1",
 		"name": "PFEIFFER/ELKEMS",

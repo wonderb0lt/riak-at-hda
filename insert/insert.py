@@ -11,6 +11,11 @@ def usage():
 
 
 def get_data(args):
+    if '006MME' not in args[0]:
+        print 'Only 006MME.json is already in new format. Sorry.'
+        sys.exit(42)
+
+
     try:
         data = open(args[0], 'r').read()
     except IOError as e:
@@ -22,71 +27,65 @@ def get_data(args):
 
     return json.loads(data)
 
-def insert_airport_for_flight(client, flight):
-    airports = client.bucket(conf.buckets['airports'])
+def insert_booking(client, data):
+    print "Storing booking with id %s" % data['booking']['id']
+    client.bucket('booking').new(data['booking']['id'], data=data['booking']).store()
 
-    for k in ['from', 'to']:
-        flight_data = flight[k]
-        iata = flight_data['iata']
-        airport = airports.get(iata)
+def insert_passengers(client, data):
+    b = client.bucket('passenger')
+    ids = []
+    for passenger in data['passengers']:
+        key = uuid.uuid1().hex
+        print "Storing passenger with random id %s and logical id %s" % (key, passenger['id'])
+        b.new(key, passenger).store()
+        ids.append(key)
 
-        if not airport.exists():
-            print 'Storing Airport %s' % iata
-            airports.new(iata, data=flight_data).store()
-        else:
-            print('Airport %s exists, location: "%s"' % (iata, flight_data['city']))
-        # We saved it in a bucket, replace it with a reference.
-        flight_data[k] = iata
+    return ids
 
+def insert_airports(client, data):
+    b = client.bucket('airports')
 
-def insert_flight(client, flight):
-    flights = client.bucket(conf.buckets['flights'])
+    for key, airport in data['airports'].items():
+        print "Storing airport with key %s (name: %s)" % (key, airport['airport'])
+        b.new(key, airport).store()
 
-    f = flights.get(flight['id'])
-    if not f.exists():
-        print 'Inserting flight %s' % flight['id']
-        insert_airport_for_flight(client, flight)
-        flights.new(flight['id'], data=flight).store()
-    else:
-        print "Flight with id %s already exists" % flight['id']
-def insert_passenger(client, passenger):
-    name_array = passenger.keys()[0].split(' ')
-    name, surname = name_array[-1], ' '.join(name_array[0:-1])
+def insert_flights(client, data):
+    b = client.bucket('flights')
+
+    for key, flightdata in data['flights'].items():
+        print "Storing flight %s (from %s to %s)" % (key, flightdata['from'], flightdata['to'])
+        b.new(key, flightdata).store()
+
+def insert_personalflightdata(client, data):
+    b = client.bucket('personalflightdata')
+
+    for key, fdata in data['personalflightdata'].items():
+        print "Storing personal data with composite key %s" % key
+        b.new(key, fdata).store()
+
+def insert_fares(client, data):
+    b = client.bucket('fares')
     key = uuid.uuid1().hex
 
-    passengers = client.bucket(conf.buckets['passengers'])
+    print 'Inserting fare with random id %s' % key
+    b.new(key, data['fares']).store()
 
-    print 'Inserting passenger "%s,%s" with random key %s' % (name, surname, key)
-    passengers.new(key, {'PassengerID': key, 'Surename': surname, 'name': name}).store()
-
-    return key
-
-def insert_fare_infos(client, fare_info):
-    fares = client.bucket(conf.buckets['fares'])
-
-    key = uuid.uuid1().hex
-    print "Inserting fare info with random id %s" % key
-    fares.new(key, data=fare_info).store()
-
-    return key
+    return [key]
 
 def main(args=[]):
     print('Starting...')
     data = get_data(args)
     client = riak.RiakClient(host=conf.host, port=conf.port)
 
-    random_ids = [] # TODO pythonize
-    for passenger in data['passengers']:
-        random_id = insert_passenger(client, passenger)
-        random_ids.append(random_id)
-    data['passengers'] = random_ids
+    passenger_ids = insert_passengers(client, data)
+    insert_airports(client, data)
+    insert_flights(client, data)
+    insert_personalflightdata(client, data)
+    fare_ids = insert_fares(client, data)
 
-    insert_fare_infos(client, data['fares'])
-   
-    for flight in data['flights']:
-        insert_flight(client, flight)        
+    data['booking']['fares'] = fare_ids
 
-
+    insert_booking(client, data)
 
 if (__name__ == '__main__'):
     main(sys.argv[1:])
