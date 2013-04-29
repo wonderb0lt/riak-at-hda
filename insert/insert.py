@@ -42,10 +42,13 @@ def insert_airport_for_flight(client, flight):
 def insert_flight(client, flight):
     flights = client.bucket(conf.buckets['flights'])
 
-    print 'Inserting flight %s' % flight['id']
-    insert_airport_for_flight(client, flight)
-    flights.new(flight['id'], data=flight).store()
-
+    f = flights.get(flight['id'])
+    if not f.exists():
+        print 'Inserting flight %s' % flight['id']
+        insert_airport_for_flight(client, flight)
+        flights.new(flight['id'], data=flight).store()
+    else:
+        print "Flight with id %s already exists" % flight['id']
 def insert_passenger(client, passenger):
     name_array = passenger.keys()[0].split(' ')
     name, surname = name_array[-1], ' '.join(name_array[0:-1])
@@ -56,17 +59,30 @@ def insert_passenger(client, passenger):
     print 'Inserting passenger "%s,%s" with random key %s' % (name, surname, key)
     passengers.new(key, {'PassengerID': key, 'Surename': surname, 'name': name}).store()
 
+    return key
+
+def insert_fare_infos(client, fare_info):
+    fares = client.bucket(conf.buckets['fares'])
+
+    key = uuid.uuid1().hex
+    print "Inserting fare info with random id %s" % key
+    fares.new(key, data=fare_info).store()
+
+    return key
+
 def main(args=[]):
     print('Starting...')
     data = get_data(args)
     client = riak.RiakClient(host=conf.host, port=conf.port)
 
-
     random_ids = [] # TODO pythonize
     for passenger in data['passengers']:
         random_id = insert_passenger(client, passenger)
         random_ids.append(random_id)
+    data['passengers'] = random_ids
 
+    insert_fare_infos(client, data['fares'])
+   
     for flight in data['flights']:
         insert_flight(client, flight)        
 
