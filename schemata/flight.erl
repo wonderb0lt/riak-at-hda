@@ -65,7 +65,7 @@
 
 
         {field, [
-            {name, "Stops"},
+            {name, "stops"},
             {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}},
 		   {type, string} %% list of stops. since we don't know what stops look like, no idea.
         ]},
