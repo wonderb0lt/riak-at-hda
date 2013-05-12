@@ -1,9 +1,41 @@
 {
 	"id": "00QKXC",
-	"passangers":[{"BECKER/ANNAMS": 0},
-				  {"BECKER/ALEXANDERCHD": 1},
-				  {"BECKER/ARNOLDMR": 1},
-				  {"BECKER/ANNABELLEINF (INFANT)": 2}],
+
+	"personalflightdata": {
+		"TG921": {
+			"class": "Economy"
+		},
+		"TG920": {
+			"class": "Economy",
+		}
+	},
+	"passengers": [
+			{
+				"id": "BECKER/ANNAMS",
+			 	"type": 0,
+			 	"name": "Becker",
+			 	"surname": "Anna"
+			},
+			{
+				"id": "BECKER/ALEXANDERCHD",
+				"type": 1,
+				"name": "Becker",
+				"surname": "Alexander"
+			},
+			{
+				"id": "BECKER/ARNOLDMR",
+				"type": 1,
+				"name": "Becker",
+				"surname": "Arnold"
+			},
+			{
+				"id": "BECKER/ANNABELLEINF (INFANT)",
+				"type": 2,
+				"name": "Becker",
+				"surname": "Anabelle"
+			}
+	],
+
 	"flights": [
 		{
 			"id": "TG921",
@@ -24,7 +56,6 @@
 				"airport": "Suvarnabhumi Intl Arpt",
 				"terminal": ""
 			},
-			"class": "Economy",
 			"stops": [],
 			"duration": 38400,
 			"status": "Confirmed",
@@ -50,7 +81,6 @@
 				"terminal": "1"
 			},
 
-			"class": "Economy",
 			"stops": [],
 			"duration": 40500,
 			"status": "Confirmed",

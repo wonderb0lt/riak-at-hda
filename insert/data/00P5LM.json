@@ -1,6 +1,26 @@
 {
 	"id": "00P5LM",
-	"passengers":[{"RAUSS/ARMINMR": 0}],
+	"personalflightdata": {
+		"LH3220": {			
+			"class": "Economy",
+			"baggage": "ADT 1PC",
+			"eTicket": "2203272401000C1"
+		},
+		"LH3223": {
+			"class": "Economy",
+			"baggage": "ADT 1PC",
+			"eTicket": "2203272401000C2"
+		}
+	},
+	"passengers":
+	[
+		{
+			"id":"RAUSS/ARMINMR",
+			"type": 0,
+			"name": "Rauss",
+			"surname": "Armin"
+		}
+	],
 	"flights":[
 		{
 			"id": "LH3220",
@@ -21,13 +41,10 @@
 				"airport": "Charles De Gaulle Intl Arpt",
 				"terminal": "1"
 			},
-			"class": "Economy",
-			"baggage": "ADT 1PC",
 			"stops": [],
 			"duration": 3900,
 			"status": "Confirmed",
 			"aircraft": "Canadair Regional Jet 900",
-			"eTicket": "2203272401000C1"
 		},	
 		{
 			"id": "LH3223",
@@ -49,13 +66,10 @@
 				"terminal": ""
 			},
 
-			"class": "Economy",
-			"baggage": "ADT 1PC",
 			"stops": [],
 			"duration": 3900,
 			"status": "Confirmed",
 			"aircraft": "Canadair Regional Jet 900",
-			"eTicket": "2203272401000C2"
 		}
 	],
 

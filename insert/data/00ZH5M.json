@@ -1,6 +1,51 @@
 {
 	"id": "00ZH5M",
-	"passenger":[{"RAUSS/ARMINMR": 0}],
+	"personalflightdata": {
+		"LH2023": {
+			"class": "Economy",
+			"baggage": "ADT 1PC",
+			"eTicket": "2203272401000C1",
+			"seats": {
+				"number":"07D",
+				"non-smoking":true
+			}
+		},
+		"LH2214": {
+			"class": "Economy",
+			"baggage": "ADT 1PC",
+			"eTicket": "2203272401000C2",
+			"seats": {
+				"number":"08C",
+				"non-smoking":true
+			}
+		}, 
+		"LH2219": {
+			"class": "Business",
+			"baggage": "ADT 2PC",
+			"eTicket": "2203272401000C3",
+			"seats": {
+				"number":"02C",
+				"non-smoking":true
+			}
+		}, 
+		"LH2024": {
+			"class": "Business",
+			"baggage": "ADT 2PC",
+			"eTicket": "2203272401000C4",
+			"seats": {
+				"number":"02C",
+				"non-smoking":true
+			}
+		}
+	},
+	"passengers":[
+		{
+			"id":"RAUSS/ARMINMR",
+			"type": 0,
+			"name": "Rauss",
+			"surname": "Armin"
+		}
+	],
 	"flights":[
 		{
 			"id": "LH2023",
@@ -22,17 +67,11 @@
 				"airport": "Munich Intl Arpt",
 				"terminal": "2"
 			},
-			"class": "Economy",
-			"baggage": "ADT 1PC",
 			"stops": [],
 			"duration": 4200,
 			"status": "Confirmed",
 			"aircraft": "Airbus Industrie A320-100/200",
-			"eTcket": "2203272401000C1",
-			"seats": {
-				"number":"07D",
-				"non-smoking":true
-			}
+
 		},	
 		{
 			"flight": "LH2214",
@@ -53,18 +92,11 @@
 				"airport": "Blagnac Arpt",
 				"terminal": ""
 			},
-
-			"class": "Economy",
-			"baggage": "ADT 1PC",
 			"stops": [],
 			"duration": 3900,
 			"status": "Confirmed",
 			"aircraft": "Canadair Regional Jet 900",
-			"eTcket": "2203272401000C2",
-			"seats":{
-				"number":"08C",
-				"non-smoking":true
-			}
+			
 		},
    		{
 			"id": "LH2219",
@@ -85,17 +117,11 @@
 				"airport": "Munich Intl Arpt",
 				"terminal": "2"
 			},
-			"class": "Business",
-			"baggage": "ADT 2PC",
+	
 			"stops": [],
 			"duration": 3800,
 			"status": "Confirmed",
 			"aircraft": "Canadair Regional Jet 900",
-			"eTicket": "2203272401000C3",
-			"seats":{
-				"Number":"02D",
-				"non-smoking":true
-			}
 		},
     	{
 			"id": "LH2024",
@@ -121,17 +147,10 @@
 				"airport": "Dusseldorf Arpt",
 				"terminal": ""
 			},
-			"class": "Business",
-			"baggage": "ADT 2PC",
 			"stops": [],
 			"duration": 4200,
 			"status": "Confirmed",
 			"aircraft": "Airbus Industrie A320-100/200",
-			"eTicket": "2203272401000C4",
-			"seats":{
-				"number":"02C",
-				"non-smoking":true
-			}
 		}
 	],	
 		

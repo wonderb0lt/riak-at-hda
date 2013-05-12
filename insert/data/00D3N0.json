@@ -1,6 +1,25 @@
 {
 	"id": "00D3N0",
-	"passengers":[{"LANZ/BERNHARDMR": 0}],
+	"personalflightdata": {
+		"4U2015": {
+			"eTicket": "2203272401000C1",
+			"class": "Economy",
+			"baggage": "ADT 1PC"
+		},
+		"4U8005": {
+			"eTicket": "2203272401000C2",
+			"class": "Economy",
+			"baggage": "ADT 1PC",
+		}
+	},
+	"passengers":[
+		{
+			"id": "LANZ/BERNHARDMR",
+			"type": 0,
+			"name": "Lanz",
+			"surname": "Bernhard"
+		}
+	],
 	"flights": [
 		{
 			"id": "4U2015",
@@ -21,13 +40,9 @@
 				"airport": "Stuttgart Arpt",
 				"terminal": "3"
 			},
-			"class": "Economy",
-			"baggage": "ADT 1PC",
 			"Stops": "Non-Stop",
 			"duration": 3600,
-			"status": "Confirmed",
 			"aircraft": "Airbus Industrie A319",
-			"eTicket": "2203272401000C1"
 		},
 		{
 			"id": "4U8005",
@@ -49,13 +64,10 @@
 				"terminal": ""
 			},
 
-			"class": "Economy",
-			"baggage": "ADT 1PC",
 			"Stops": "Non-Stop",
 			"duration": 4200,
 			"status": "Confirmed",
 			"aircraft": "Airbus Industrie A319",
-			"eTicket": "2203272401000C2"
 		}
 	],
 		
