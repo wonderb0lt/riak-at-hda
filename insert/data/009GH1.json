@@ -46,7 +46,7 @@
 			"stops": [],
 			"duration": 4500,
 			"status": "Confirmed",
-			"aircraft": "Airbus Industrie A320-100/200",
+			"aircraft": "Airbus Industrie A320-100/200"
 		},
 		{
 			"id": "LX4563",
@@ -70,8 +70,7 @@
 			"stops": [],
 			"duration": 4500,
 			"status": "Confirmed",
-			"aircraft": "Airbus Industrie A319",
-			
+			"aircraft": "Airbus Industrie A319"		
 		}
 	],
 	

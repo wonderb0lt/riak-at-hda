@@ -44,7 +44,7 @@
 			"stops": [],
 			"duration": 3900,
 			"status": "Confirmed",
-			"aircraft": "Canadair Regional Jet 900",
+			"aircraft": "Canadair Regional Jet 900"
 		},	
 		{
 			"id": "LH3223",
@@ -69,7 +69,7 @@
 			"stops": [],
 			"duration": 3900,
 			"status": "Confirmed",
-			"aircraft": "Canadair Regional Jet 900",
+			"aircraft": "Canadair Regional Jet 900"
 		}
 	],
 

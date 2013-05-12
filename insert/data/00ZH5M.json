@@ -70,7 +70,7 @@
 			"stops": [],
 			"duration": 4200,
 			"status": "Confirmed",
-			"aircraft": "Airbus Industrie A320-100/200",
+			"aircraft": "Airbus Industrie A320-100/200"
 
 		},	
 		{
@@ -95,7 +95,7 @@
 			"stops": [],
 			"duration": 3900,
 			"status": "Confirmed",
-			"aircraft": "Canadair Regional Jet 900",
+			"aircraft": "Canadair Regional Jet 900"
 			
 		},
    		{
@@ -121,17 +121,12 @@
 			"stops": [],
 			"duration": 3800,
 			"status": "Confirmed",
-			"aircraft": "Canadair Regional Jet 900",
+			"aircraft": "Canadair Regional Jet 900"
 		},
     	{
 			"id": "LH2024",
-			"departure":{
-				"Date": "2013-04-04",
-				"Time": "21:00"},
-			"arrival":{
-				"Date": "2013-04-04",
-				"Time": "22:10"
-			},
+			"departure":1365099900,
+			"arrival":1365105900,
 			"airline": "Lufthansa",
 			"from": {
 				"country": "Germany",
@@ -150,7 +145,7 @@
 			"stops": [],
 			"duration": 4200,
 			"status": "Confirmed",
-			"aircraft": "Airbus Industrie A320-100/200",
+			"aircraft": "Airbus Industrie A320-100/200"
 		}
 	],	
 		
