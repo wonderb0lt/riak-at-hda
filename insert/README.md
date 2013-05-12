@@ -4,7 +4,7 @@
 To install, follow these steps:
 
 1. Obtain Python 2.7 (Should be included in most Linux Distributions)
-2. Obtain pip (a package installing tool for python)
+2. Obtain pip (Is in Debian/Ubuntu as "python-pip", elsewise download & install from [PyPi](https://pypi.python.org/pypi/pip))
 3. Install prerequisities for the insert script (pip install -r insert/requirements.txt)
 
 ...you should now be able to run the script!
