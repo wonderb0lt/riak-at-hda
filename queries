@@ -1,0 +1,31 @@
+http://docs.basho.com/riak/1.3.1/cookbooks/Riak-Search---Querying/
+#search-cmd funktioniert weitestgehend mit dem format der lucene 2.9.1 api
+#search / search-doc | id / document
+
+#Den Buchungssatz mit der Buchungsnummer 009GH1
+search-cmd search-doc FlightData id 009GH1
+http://bdc-n-e4.fbi.h-da.de:8098/solr/FlightData/select?q=id:009GH1
+
+#Den Buchungssatz mit der Ticketnummer 2203272401000
+search-cmd search-doc FlightData personalfightdata.eTicket 2203272401000
+http://bdc-n-e4.fbi.h-da.de:8098/solr/FlightData/select?q=personalfightdata.eTicket:2203272401000
+
+#Alle Buchungen, die kein Direkt ug sind (d.h. mit Umsteigen)
+search-cmd search-doc FlightData -flights.stops ? # ka wie ich da auf ein leeres array prüfen kann
+http://bdc-n-e4.fbi.h-da.de:8098/solr/FlightData/select?q=flights.stops:"[]" # bezweifle ob das geht 
+
+#Alle Buchungen, die ein One-Way sind (d.h. ohne Rückflug)
+search-cmd search-doc FlightData -personalflightdata #personalflightdata anzahl größer 1  TODO
+
+#Alle Buchungen, die noch nicht ausgetellt wurden (d.h. kein Preis vorhanden)
+search-cmd search-doc FlightData fares # Hier müsste man anzahl fares = 0 oder irgendwie auf nicht existenz prüfen TODO
+
+#Alle Buchungen mit mehr als einem Passagier
+search-cmd search-doc FlightDta passengers #  Hier müsste man wieder auf Anzahl > 1 prüfen. TODO
+
+#Alle Buchungen, bei denen der Flug in Düsseldorf (DUS) begonnen wird
+search-cmd search-doc FlightData flights.from.iata DUS # müsste der erste flight eintrag darauf getested werden, kann ja auch der Rückflig in DUS beginnen TODO
+
+#Die Anzahl der Buchungen, bei denen der Flug in Düsseldorf (DUS) begonnen wurde
+# Weiterhin das Problem mit dem Zählen. TODO
+
