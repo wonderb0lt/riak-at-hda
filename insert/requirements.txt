@@ -3,4 +3,5 @@ docopt==0.6.1
 protobuf==2.4.1
 riak==1.5.2
 riak-pb==1.2.1
+stopwatch==0.3.1
 wsgiref==0.1.2
