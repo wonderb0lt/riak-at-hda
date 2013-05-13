@@ -16,7 +16,7 @@ curl -XPOST http://bdc-n-e4.fbi.h-da.de:8098/mapred \
 	"query":[{"map":{"language":"javascript",
 	"source":"function(riakObject) {
 		var results = [];
-		var m = riakObject.values[0].data.match(/\"eTicket\":\\s\"2203272401000/, \"gi\");
+		var m = riakObject.values[0].data.match(/\"eTicket\":\\s\"2203272401000/, \"i\");
 		if(m != null){
 			results.push(riakObject.key);
 		}
@@ -31,7 +31,7 @@ curl -XPOST http://bdc-n-e4.fbi.h-da.de:8098/mapred \
 	"query":[{"map":{"language":"javascript",
 	"source":"function(riakObject) {
 		var results = [];
-		var m = riakObject.values[0].data.match(/\"stops\":\\s\[\]/, \"gi\");
+		var m = riakObject.values[0].data.match(/\"stops\":\\s\[\]/, \"i\");
 		if(m != null){
 			results.push(riakObject.key);
 		}
