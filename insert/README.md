@@ -13,7 +13,8 @@ To install, follow these steps:
 
 Review host and port in conf.py (and, if nessecary, change the bucket name)
 
-After that you can run the script with the following command:
+After that you can run the script with the following commands:
 
 `./insert.py data/006MME.json` to insert a specific file
 `./insert.py data/file1.json data/file2.json ...` to insert multiple files at once
+`./insert.py --generate` to generate a number of files. Set the `number_of_entries` in the conf.py to your needs!
