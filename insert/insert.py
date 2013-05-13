@@ -16,7 +16,7 @@ import generate
 from docopt import docopt
 import uuid
 import conf
-
+import stopwatch
 
 def get_data_from_file(files):
     if len(files) == 0:
@@ -43,17 +43,27 @@ def generate_data():
 def main(args):
     if args['<file>']:
         data = get_data_from_file(args['<file>'])
+        total = len(data)
     else:
         data = generate_data()
+        total = conf.generation['number_of_entries']
 
     print 'Connecting to Riak...'
     client = riak.RiakClient(host=conf.host, port=conf.port)
     bucket = client.bucket(conf.buckets['flights'])
 
-    for flight in data:
-        print 'Inserting new data for key %s' % flight['id']
+    insert_timer = stopwatch.Timer()
+    for idx, flight in enumerate(data):
+        if not args['--generate']:
+            print 'Inserting new data for key %s' % flight['id']
+        else:
+            if idx != 0 and idx % 500 == 0:
+                print 'Inserted %.2f%% of all entries...' % float((float(idx) / float(total))*100)
+
         bucket.new(flight['id'], flight).store()
 
+    print 'Insertion took %.2f seconds' % insert_timer.elapsed
+    insert_timer.stop()
     print 'I\'m done.'
 
 
