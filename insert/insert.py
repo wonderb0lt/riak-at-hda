@@ -12,6 +12,7 @@ Options:
 import sys
 import json
 import riak
+import generate
 from docopt import docopt
 import uuid
 import conf
@@ -33,12 +34,17 @@ def get_data_from_file(files):
 
         return result
 
+def generate_data():
+    print 'Generating %d entries...' % conf.generation['number_of_entries']
+    
+    for i in xrange(conf.generation['number_of_entries']):
+        yield generate.generate_entry()[1]
 
 def main(args):
     if args['<file>']:
         data = get_data_from_file(args['<file>'])
     else:
-        data = []
+        data = generate_data()
 
     print 'Connecting to Riak...'
     client = riak.RiakClient(host=conf.host, port=conf.port)
