@@ -13,6 +13,7 @@ def usage():
 def get_data(args):
     if len(args) == 0:
         usage()
+        sys.exit(2)
     else:
         result = []
         for jsonf in args:
