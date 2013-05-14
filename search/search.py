@@ -8,6 +8,11 @@ Arguments:
 
 Options:
   --buckets BUCKETS  A list of buckets to use, seperated by commas or just one [default: FlightData]
+
+Examples:
+  ./search.py queries/no-fares-map.js # Map only
+  ./search.py queries/begins-in-dusseldorf-map.js queries/begins-in-dusseldorf-red.js MapReduce
+  ./search.py queries/one-way-map.js --buckets=FlightData  # Buckets specified
 '''
 
 from docopt import docopt
