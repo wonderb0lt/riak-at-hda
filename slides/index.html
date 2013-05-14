@@ -28,24 +28,212 @@
 	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
 	<link rel="stylesheet" href="themes/transition/horizontal-slide.css">
 
+  <!-- highlight.js css -->
+  <link rel="stylesheet" href="styles/tomorrow-night-eighties.css">
+
 	<script src="modernizr.custom.js"></script>
+
+  <style type="text/css">
+    #title-slide img {
+      position:absolute;
+      top:300px;
+      left: 250px;
+    }
+  </style>
 </head>
 
 <body class="deck-container">
 
 <!-- Begin slides -->
 <section class="slide" id="title-slide">
-	<h1>Riak</h1>
+	<img src="images/riak-logo.png" style="position:absolute">
 </section>
 
 <section class="slide" id="riak-overview-1">
 	<h2>Riak: Vorstellung</h2>
 	<ul>
 		<li><h3>Key-value store</h3></li>
+    <li><h3>Based on Amazons Dynamo white paper</h3></li>
+    <li><h3>Key can be organized in buckets</h3></li>
+
 	</ul>
 </section>
 
-<section class="slide" id="how-to-overview">
+<section class="slide" id="riak-overview-2">
+  <h2>Riak: Vorstellung</h2>
+  <img src="images/riak-ring.png" alt="">
+</section>
+
+<section class="slide" id="riak-installation">
+  <h2>Riak: Installation</h2>
+  <ul>
+    <li><h3>Obtain <em>deb</em> file (for example, for Ubuntu 12.04)</h3></li>
+    <li><h3>Install with <code>dpkg -i riak_1.3.1-1_amd64.deb</code></h3></li>
+    <li><h3>Make sure <code>/etc/riak/app.config</code> is editable</h3></li>
+    <li><h3>Edit it to listen on the IP 0.0.0.0 (on lines 15, 33 and 37 in the standard config)</h3></li>
+    <li><h3>Change -name riak@0.0.0.0 to -name riak@bdc-n-e<strong>X</strong>.fbi.h-da.de in <code>/etc/riak/vm.args</code></h3></li>
+    <li><h3>Set <code>ulimit -n 4096</code> (max number of open files)</h3></li>
+  </ul>
+</section>
+
+<section class="slide" id="riak-config">
+  <h2>Riak: Konfiguration</h2>
+  <ul>
+    <li><h3>Building a cluster</h3></li>
+  </ul>
+</section>
+
+<section class="slide" id="riak-data-models">
+  <h2>Riak: Daten Modellierung</h2>
+  <pre><code class="javascript">{
+  "id": "006MME",
+  "personalflightdata": {...},
+  "passengers": [
+    {
+      "id": "PFEIFFER/ELKEMS",
+      "type": 0,
+      "name": "Pfeiffer",
+      "surname": "Elke"
+    }
+  ],
+  "flights": [
+    {
+      "id": "AF7542",
+      "departure": 1364373300,
+      "arrival": 1364377800,
+      "airline": "Air France",
+      "from": {...},
+      "to": {...},
+      "stops": [],
+      "duration": 4500,
+      "status": "Confirmed",
+      "aircraft": "Airbus Industrie A321"
+    }
+  ],
+  "fares": {...}
+}</code></pre>
+</section>
+
+<section class="slide" id="riak-insert-data">
+  <h2>Riak: Daten einfügen</h2>
+  <ul>
+    <li><h3>Pretty easy!</h3></li>
+    <li><h3>Read in JSON from files</h3></li>
+    <li><h3>Save it in bucket</h3></li>
+  </ul>
+  <pre>
+    <code class="python">
+def main(args):
+  data = get_data_from_file(args['<file>'])
+
+  client = riak.RiakClient(host=conf.host, port=conf.port)
+  bucket = client.bucket(conf.buckets['flights'])
+
+  for idx, flight in enumerate(data):
+    bucket.new(flight['id'], flight).store()
+
+</code>
+  </pre>
+</section>
+
+<section class="slide" id="riak-query-data-0">
+  <h2>Riak: Daten abfragen</h2>
+  <ul>
+    <li><h3>HTTP GET Requests</h3></li>
+    <li><h3>Map/Reduce</h3></li>
+    <li><h3>Riak Search</h3></li>
+    <li><h3>Secondary Indexes</h3></li>
+  </ul>
+</section>
+
+<section class="slide" id="riak-query-data-1">
+  <h2>Riak: Daten abfragen</h2>
+  <h3>Map</h3>
+  <pre>
+    <code class="javascript">function(v) {
+  var sum = 0
+  var total = v.values.length;
+  var data = JSON.parse(v.values[0].data);
+  if (data.fares) {
+    return [data.fares.taxes];
+  } else {
+    return []
+  }
+}</code>
+  </pre>
+</section>
+
+<section class="slide" id="riak-query-data-2">
+  <h2>Riak: Daten abfragen</h2>
+  <h3>Reduce</h3>
+  <pre>
+    <code class="javascript">function(v) {
+  var total = 0.0;
+  var sum = 0;
+  for (i in v) {
+    sum += v[i];
+    total++;
+  }
+  var avg = sum/total;
+  return [avg];
+}</code>
+  </pre>
+</section>
+
+<section class="slide" id="riak-query-data-3">
+  <h2>Riak: Daten abfragen</h2>
+  <h3>Riak Search</h3>
+  <pre>
+    <code class="javascript">
+import riak
+
+client = riak.RiakClient()
+
+# First parameter is the bucket we want to search within, the second
+# is the query we want to perform.
+search_query = client.search('user', 'first_name:[Anna TO John]')
+
+for result in search_query.run():
+    # You get ``RiakLink`` objects back.
+    user = result.get()
+    user_data = user.get_data()
+    print "%s %s" % (user_data['first_name'], user_data['last_name'])
+  </code>
+  </pre>
+</section>
+
+<section class="slide" id="riak-query-data-4">
+  <h2>Riak: Daten abfragen</h2>
+  <h3>Riak Secondary Indexes</h3>
+  <pre>
+    <code class="javascript">
+import riak
+
+client = riak.RiakClient()
+bucket = client.bucket('mybucket')
+
+# Create and store the object with indexes...
+obj = bucket.new('mykey1', 'mydata')
+obj.add_index('field1_bin', 'val1')
+obj.add_index('field2_int', 1001)
+obj.store()
+
+# Query the indexes. The return value is a list of ``RiakLink`` objects.
+results = client.index('mybucket', 'field1_bin', 'val1').run()
+
+# Query the indexes using a range...
+results = client.index('mybucket', 'field1_bin', 'val1', 'val5').run()
+
+# Remove an index entry...
+obj = bucket.get('mykey1')
+obj.remove_index('field1_bin', 'val1')
+obj.store()
+  </code>
+  </pre>
+</section>
+
+
+<!-- <section class="slide" id="how-to-overview">
 	<h2>How to Make a Deck</h2>
 	<ol>
 		<li>
@@ -173,7 +361,7 @@
 <section class="slide" id="digging-deeper">
 	<h2>Digging Deeper</h2>
 	<p>If you want to learn about making your own themes, extending deck.js, and more, check out the&nbsp;<a href="../docs/">documentation</a>.</p>
-</section>
+</section> -->
 
 <!-- deck.navigation snippet -->
 <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
@@ -199,8 +387,7 @@
 
 
 <!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="jquery-1.7.2.min.js"><\/script>')</script>
+<script src="jquery-1.7.2.min.js"></script>
 
 <!-- Deck Core and extensions -->
 <script src="core/deck.core.js"></script>
@@ -211,10 +398,14 @@
 <script src="extensions/navigation/deck.navigation.js"></script>
 <script src="extensions/scale/deck.scale.js"></script>
 
+<!-- 3rd party libs -->
+<script src="scripts/highlight.pack.js"></script>
+
 <!-- Initialize the deck -->
 <script>
 $(function() {
 	$.deck('.slide');
+  $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
 });
 </script>
 
