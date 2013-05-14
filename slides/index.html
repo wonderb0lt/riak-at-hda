@@ -50,17 +50,18 @@
 </section>
 
 <section class="slide" id="riak-overview-1">
-	<h2>Riak: Vorstellung</h2>
+	<h2>Riak: Overview</h2>
 	<ul>
 		<li><h3>Key-value store</h3></li>
     <li><h3>Based on Amazons Dynamo white paper</h3></li>
-    <li><h3>Key can be organized in buckets</h3></li>
-
+    <li><h3>Distributed <em>without</em> a master node</h3></li>
+    <li><h3>Availability, partition tolerance and <em>eventual</em> consistency</h3></li>
+    <li><h3>Keys are organized in buckets</h3></li>
 	</ul>
 </section>
 
 <section class="slide" id="riak-overview-2">
-  <h2>Riak: Vorstellung</h2>
+  <h2>Riak: Overview</h2>
   <img src="images/riak-ring.png" alt="">
 </section>
 
@@ -77,14 +78,14 @@
 </section>
 
 <section class="slide" id="riak-config">
-  <h2>Riak: Konfiguration</h2>
+  <h2>Riak: Configuration</h2>
   <ul>
     <li><h3>Building a cluster</h3></li>
   </ul>
 </section>
 
 <section class="slide" id="riak-data-models">
-  <h2>Riak: Daten Modellierung</h2>
+  <h2>Riak: Data modelling</h2>
   <pre><code class="javascript">{
   "id": "006MME",
   "personalflightdata": {...},
@@ -115,7 +116,7 @@
 </section>
 
 <section class="slide" id="riak-insert-data">
-  <h2>Riak: Daten einfügen</h2>
+  <h2>Riak: Data insertion</h2>
   <ul>
     <li><h3>Pretty easy!</h3></li>
     <li><h3>Read in JSON from files</h3></li>
@@ -137,7 +138,7 @@ def main(args):
 </section>
 
 <section class="slide" id="riak-query-data-0">
-  <h2>Riak: Daten abfragen</h2>
+  <h2>Riak: Query data</h2>
   <ul>
     <li><h3>HTTP GET Requests</h3></li>
     <li><h3>Map/Reduce</h3></li>
@@ -147,7 +148,7 @@ def main(args):
 </section>
 
 <section class="slide" id="riak-query-data-1">
-  <h2>Riak: Daten abfragen</h2>
+  <h2>Riak: Query data</h2>
   <h3>Map</h3>
   <pre>
     <code class="javascript">function(v) {
@@ -164,7 +165,7 @@ def main(args):
 </section>
 
 <section class="slide" id="riak-query-data-2">
-  <h2>Riak: Daten abfragen</h2>
+  <h2>Riak: Query data</h2>
   <h3>Reduce</h3>
   <pre>
     <code class="javascript">function(v) {
@@ -181,7 +182,7 @@ def main(args):
 </section>
 
 <section class="slide" id="riak-query-data-3">
-  <h2>Riak: Daten abfragen</h2>
+  <h2>Riak: Query data</h2>
   <h3>Riak Search</h3>
   <pre>
     <code class="javascript">
@@ -203,7 +204,7 @@ for result in search_query.run():
 </section>
 
 <section class="slide" id="riak-query-data-4">
-  <h2>Riak: Daten abfragen</h2>
+  <h2>Riak: Query data</h2>
   <h3>Riak Secondary Indexes</h3>
   <pre>
     <code class="javascript">
@@ -230,6 +231,10 @@ obj.remove_index('field1_bin', 'val1')
 obj.store()
   </code>
   </pre>
+</section>
+
+<section class="slide" id="riak-thanks">
+  <h1>Thank you!</h1>
 </section>
 
 
