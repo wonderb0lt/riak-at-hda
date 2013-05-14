@@ -14,7 +14,9 @@ from docopt import docopt
 import riak
 import conf
 import os.path
+import time
 
+verbose = False
 
 def get_query_string(f):
 	if not f or not os.path.exists(f):
@@ -44,6 +46,18 @@ def main(args):
 	if r:
 		query.reduce(r)
 
+	start = time.time()
+	results = query.run()
+	end = time.time()
+
+	if verbose:
+		print 'map: %s' % m
+		print 'red: %s' % r
+
+		print 'Querying %s@%s:%d' % (args['--buckets'], conf.host, conf.port)
+
+	print 'Query perfomed successfully! Took %.2fs.' % (end-start)
+	print '#### RESULT ####'
 	for result in query.run():
 	    # Print the key (``v.key``) and the value for that key (``data``).
 		print str(result)
