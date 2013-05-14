@@ -1,7 +1,13 @@
 #!/usr/bin/env python2
-''' The search script
-Usage:
-	search.py <map-file> [<reduce-file>]
+'''The search script
+Usage: search.py [--buckets=FlightData] <map-file> [<reduce-file>]
+
+Arguments:
+  <map-file>  The mapping file (Javascript)
+  <reduce-file>  The reduce file (Javascript)
+
+Options:
+  --buckets BUCKETS  A list of buckets to use, seperated by commas or just one [default: FlightData]
 '''
 
 from docopt import docopt
@@ -24,10 +30,14 @@ def main(args):
 		r = get_query_string(args['<reduce-file>'])
 	else:
 		r = None
-	client = riak.RiakClient(host='bdc-n-e3.fbi.h-da.de', port=8098)
 
-	# First, you need to ``add`` the bucket you want to MapReduce on.
-	query = client.add('FlightData')
+
+	client = riak.RiakClient(host=conf.host, port=conf.port)
+
+	# Add buckets from the command line
+	for bucket in args['--buckets'].split(','):
+		query = client.add(bucket)
+
 	# Then, you supply a Javascript map function as the code to be executed.
 	query.map(m)
 
