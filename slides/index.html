@@ -151,10 +151,8 @@ def main(args):
   <h3>Map</h3>
   <pre>
     <code class="javascript">function(v) {
-  var sum = 0
-  var total = v.values.length;
   var data = JSON.parse(v.values[0].data);
-  if (data.fares) {
+  if (data &amp;&amp; data.fares &amp;&amp; data.fares.taxes) {
     return [data.fares.taxes];
   } else {
     return []
