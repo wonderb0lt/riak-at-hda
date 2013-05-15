@@ -3,9 +3,9 @@ host = 'localhost'
 port = 8098
 
 buckets = {
-	'flights': 'dump'
+	'flights': 'FlightData'
 }
 
 generation = {
-	'number_of_entries': 10000
+	'number_of_entries': 10
 }
