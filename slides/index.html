@@ -39,6 +39,19 @@
       top:300px;
       left: 250px;
     }
+
+    em {
+      color: #c00;
+    }
+
+    code {
+      padding-left: 1em !important;
+    }
+
+    .slide iframe {
+      width: 800px;
+      height: 600px;
+    }
   </style>
 </head>
 
@@ -57,11 +70,13 @@
     <li><h3>Distributed <em>without</em> a master node</h3></li>
     <li><h3>Availability, partition tolerance and <em>eventual</em> consistency</h3></li>
     <li><h3>Keys are organized in buckets</h3></li>
+    <li><h3>REST API</h3></li>
 	</ul>
 </section>
 
 <section class="slide" id="riak-overview-2">
   <h2>Riak: Overview</h2>
+  <h3>Key-based partitioning</h3>
   <img src="images/riak-ring.png" alt="">
 </section>
 
@@ -86,6 +101,12 @@ bin/riak-admin cluster join riak@192.168.1.10
 bin/riak-admin cluster plan
 bin/riak-admin cluster commit
   </code></pre>
+</section>
+
+<section class="slide" id="riak-config-1">
+  <h2>Riak: Installation & Configuration</h2>
+  <h3>Riak Control - Cluster view</h3>
+  <img src="images/riak-control-cluster.jpg" alt="">
 </section>
 
 <section class="slide" id="riak-data-models">
@@ -149,6 +170,16 @@ def main(args):
     <li><h3>Riak Search</h3></li>
     <li><h3>Secondary Indexes</h3></li>
   </ul>
+</section>
+
+<section class="slide" id="riak-query-data-0-1">
+  <h2>Riak: Query data</h2>
+  <h3>HTTP GET Request</h3>
+  <pre>
+    <code class="bash">
+$ curl -v http://127.0.0.1:8098/riak/test/doc2
+    </code>
+  </pre>
 </section>
 
 <section class="slide" id="riak-query-data-1">
@@ -238,7 +269,6 @@ obj.store()
 <section class="slide" id="riak-thanks">
   <h1>Thank you!</h1>
 </section>
-
 
 <!-- <section class="slide" id="how-to-overview">
 	<h2>How to Make a Deck</h2>
