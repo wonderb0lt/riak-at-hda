@@ -46,6 +46,8 @@
 
     code {
       padding-left: 1em !important;
+      padding-top: 1em !important;
+      padding-bottom: 1em !important;
     }
 
     .slide iframe {
@@ -95,12 +97,10 @@
 <section class="slide" id="riak-config">
   <h2>Riak: Installation & Configuration</h2>
   <h3>Building a cluster</h3>
-  <pre><code>
-bin/riak-admin cluster join riak@192.168.1.10
+  <pre><code>bin/riak-admin cluster join riak@192.168.1.10
 
 bin/riak-admin cluster plan
-bin/riak-admin cluster commit
-  </code></pre>
+bin/riak-admin cluster commit</code></pre>
 </section>
 
 <section class="slide" id="riak-config-1">
@@ -148,17 +148,14 @@ bin/riak-admin cluster commit
     <li><h3>Save it in bucket</h3></li>
   </ul>
   <pre>
-    <code class="python">
-def main(args):
+    <code class="python">def main(args):
   data = get_data_from_file(args['<file>'])
 
   client = riak.RiakClient(host=conf.host, port=conf.port)
   bucket = client.bucket(conf.buckets['flights'])
 
   for idx, flight in enumerate(data):
-    bucket.new(flight['id'], flight).store()
-
-</code>
+    bucket.new(flight['id'], flight).store()</code>
   </pre>
 </section>
 
@@ -176,9 +173,7 @@ def main(args):
   <h2>Riak: Query data</h2>
   <h3>HTTP GET Request</h3>
   <pre>
-    <code class="bash">
-$ curl -v http://127.0.0.1:8098/riak/test/doc2
-    </code>
+    <code class="bash">$ curl -v http://127.0.0.1:8098/riak/test/doc2</code>
   </pre>
 </section>
 
@@ -218,8 +213,7 @@ $ curl -v http://127.0.0.1:8098/riak/test/doc2
   <h2>Riak: Query data</h2>
   <h3>Riak Search</h3>
   <pre>
-    <code class="javascript">
-import riak
+    <code class="javascript">import riak
 
 client = riak.RiakClient()
 
@@ -231,8 +225,7 @@ for result in search_query.run():
     # You get ``RiakLink`` objects back.
     user = result.get()
     user_data = user.get_data()
-    print "%s %s" % (user_data['first_name'], user_data['last_name'])
-  </code>
+    print "%s %s" % (user_data['first_name'], user_data['last_name'])</code>
   </pre>
 </section>
 
@@ -240,8 +233,7 @@ for result in search_query.run():
   <h2>Riak: Query data</h2>
   <h3>Riak Secondary Indexes</h3>
   <pre>
-    <code class="javascript">
-import riak
+    <code class="javascript">import riak
 
 client = riak.RiakClient()
 bucket = client.bucket('mybucket')
@@ -261,13 +253,12 @@ results = client.index('mybucket', 'field1_bin', 'val1', 'val5').run()
 # Remove an index entry...
 obj = bucket.get('mykey1')
 obj.remove_index('field1_bin', 'val1')
-obj.store()
-  </code>
+obj.store()</code>
   </pre>
 </section>
 
 <section class="slide" id="riak-thanks">
-  <h1>Thank you!</h1>
+  <h1><marquee behavior="alternate" scrollamount="20" scrolldelay="60">Thank you!</marquee></h1>
 </section>
 
 <!-- <section class="slide" id="how-to-overview">
