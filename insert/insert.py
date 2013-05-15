@@ -2,10 +2,17 @@
 """Patrick's awesome insert script!
 
 Usage:
-        insert.py (--generate | <file>...)
+    insert.py (--generate | <file>...)
 
 Options:
     --generate      Generate test data
+
+Examples:
+    Insert a few files into a bucket (see conf.py):
+        python insert.py data/006MME.json data/009GH1.json
+    
+    Generate test data (the amount is set in conf.py also):
+        python insert.py --generate
 """
 
 
