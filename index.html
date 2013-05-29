@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
@@ -166,6 +166,7 @@ bin/riak-admin cluster commit</code></pre>
     <li><h3>Map/Reduce</h3></li>
     <li><h3>Riak Search</h3></li>
     <li><h3>Secondary Indexes</h3></li>
+    <li><h3>Link walking</h3></li>
   </ul>
 </section>
 
@@ -255,6 +256,12 @@ obj = bucket.get('mykey1')
 obj.remove_index('field1_bin', 'val1')
 obj.store()</code>
   </pre>
+</section>
+
+<section class="slide" id="riak-query-data-4">
+  <h2>Riak: Query data</h2>
+  <h3>Link Walking</h3>
+  <img src="images/riak-link-walking.png" alt="">
 </section>
 
 <section class="slide" id="riak-thanks">
