@@ -23,49 +23,50 @@ import time
 
 verbose = False
 
+
 def get_query_string(f):
-	if not f or not os.path.exists(f):
-		raise ValueError('Given Query file does not exist')
-	else:
-		with open(f, 'r') as handle:
-			return handle.read()
+    if not f or not os.path.exists(f):
+        raise ValueError('Given Query file does not exist')
+    else:
+        with open(f, 'r') as handle:
+            return handle.read()
+
 
 def main(args):
-	m = get_query_string(args['<map-file>'])
-	
-	if args['<reduce-file>']:
-		r = get_query_string(args['<reduce-file>'])
-	else:
-		r = None
+    m = get_query_string(args['<map-file>'])
 
+    if args['<reduce-file>']:
+        r = get_query_string(args['<reduce-file>'])
+    else:
+        r = None
 
-	client = riak.RiakClient(host=conf.host, port=conf.port)
+    client = riak.RiakClient(host=conf.host, port=conf.port)
 
-	# Add buckets from the command line
-	for bucket in args['--buckets'].split(','):
-		query = client.add(bucket)
+    # Add buckets from the command line
+    for bucket in args['--buckets'].split(','):
+        query = client.add(bucket)
 
-	# Then, you supply a Javascript map function as the code to be executed.
-	query.map(m)
+    # Then, you supply a Javascript map function as the code to be executed.
+    query.map(m)
 
-	if r:
-		query.reduce(r)
+    if r:
+        query.reduce(r)
 
-	start = time.time()
-	results = query.run()
-	end = time.time()
+    start = time.time()
+    results = query.run()
+    end = time.time()
 
-	if verbose:
-		print 'map: %s' % m
-		print 'red: %s' % r
+    if verbose:
+        print 'map: %s' % m
+        print 'red: %s' % r
 
-		print 'Querying %s@%s:%d' % (args['--buckets'], conf.host, conf.port)
+        print 'Querying %s@%s:%d' % (args['--buckets'], conf.host, conf.port)
 
-	print 'Query perfomed successfully! Took %.2fs.' % (end-start)
-	print '#### RESULT ####'
-	for result in query.run():
-	    # Print the key (``v.key``) and the value for that key (``data``).
-		print str(result)
+    print 'Query perfomed successfully! Took %.2fs.' % (end - start)
+    print '#### RESULT ####'
+    for result in query.run():
+        # Print the key (``v.key``) and the value for that key (``data``).
+        print str(result)
 
 if __name__ == '__main__':
-	main(docopt(__doc__))
+    main(docopt(__doc__))
