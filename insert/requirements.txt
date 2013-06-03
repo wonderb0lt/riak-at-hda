@@ -1,7 +1,7 @@
 argparse==1.2.1
 docopt==0.6.1
 protobuf==2.4.1
-riak==1.5.2
+-e git://github.com/basho/riak-python-client@2965261beb5c2b905aa10cb6d119c4639c355bde#egg=riak-dev
 riak-pb==1.2.1
 stopwatch==0.3.1
 wsgiref==0.1.2

@@ -2,10 +2,13 @@
 """Patrick's awesome insert script!
 
 Usage:
-    insert.py (--generate | <file>...)
+    insert.py (--generate <number_of_entries> | <file>...) [--host=<host>] [--port=<port>] [--protocol=<prot>]
 
 Options:
-    --generate      Generate test data
+    --generate <number_of_entries>	Generate test data
+    --host <host>					Target host [Default: localhost]
+    --port <port>					Target port [Default: 8098]
+    --protocol <prot>				Protocol to use [Default: pcb]
 
 Examples:
     Insert a few files into a bucket (see conf.py):
@@ -41,10 +44,10 @@ def get_data_from_file(files):
 
         return result
 
-def generate_data():
-    print 'Generating %d entries...' % conf.generation['number_of_entries']
+def generate_data(total):
+    print 'Generating %d entries...' % total
     
-    for i in xrange(conf.generation['number_of_entries']):
+    for i in xrange(total):
         yield generate.generate_entry()[1]
 
 def main(args):
@@ -52,14 +55,24 @@ def main(args):
         data = get_data_from_file(args['<file>'])
         total = len(data)
     else:
-        data = generate_data()
-        total = conf.generation['number_of_entries']
+        total = int(args['--generate'])
+        data = generate_data(total)
+#        total = conf.generation['number_of_entries']
 
     print 'Connecting to Riak...'
-    client = riak.RiakClient(host=conf.host, port=conf.port)
+    host = args['--host']
+    port = args['--port']
+    prot = args['--protocol']
+
+    if prot == 'http':
+        client = riak.RiakClient(host=host, port=port)
+    else:
+        client = riak.RiakClient(host=host, pb_port=port, protocol='pbc')
+
     bucket = client.bucket(conf.buckets['flights'])
 
     insert_timer = stopwatch.Timer()
+
     for idx, flight in enumerate(data):
         if not args['--generate']:
             print 'Inserting new data for key %s' % flight['id']
@@ -67,6 +80,7 @@ def main(args):
             if idx != 0 and idx % 500 == 0:
                 print 'Inserted %.2f%% of all entries...' % float((float(idx) / float(total))*100)
 
+      
         bucket.new(flight['id'], flight).store()
 
     print 'Insertion took %.2f seconds' % insert_timer.elapsed
