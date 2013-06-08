@@ -7,5 +7,5 @@ buckets = {
 }
 
 generation = {
-	'number_of_entries': 10
+	'number_of_entries': 2000000
 }

@@ -53,7 +53,7 @@ def main(args):
         query.reduce(r)
 
     start = time.time()
-    results = query.run()
+    results = query.run(timeout=9999999)
     end = time.time()
 
     if verbose:

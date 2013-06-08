@@ -67,7 +67,7 @@ def main(args):
     if prot == 'http':
         client = riak.RiakClient(host=host, port=port)
     else:
-        client = riak.RiakClient(host=host, pb_port=port, protocol='pbc')
+        client = riak.RiakClient(host=host,  pb_port=port, protocol='pbc')
 
     bucket = client.bucket(conf.buckets['flights'])
 
