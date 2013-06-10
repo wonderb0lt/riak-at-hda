@@ -11,16 +11,18 @@ var db = require('riak-js').getClient({
 
 var requests = 0;
 var index = 0;
+var total = 0;
 
 var MAX_REQUESTS = 100;
 
 var instrument = {
   'riak.request.start': function(event) {
-    console.log('[riak-js] [start] ' + event.method.toUpperCase() + ' ' + event.path);
+    //console.log('[riak-js] [start] ' + event.method.toUpperCase() + ' ' + event.path);
     requests++;
   },
   'riak.request.end': function(event) {
-    console.log('[riak-js] [end] ' + event.method.toUpperCase() + ' ' + event.path);
+    //console.log('[riak-js] [end] ' + event.method.toUpperCase() + ' ' + event.path);
+    total++;
     requests--;
   }
 }
@@ -229,7 +231,10 @@ function checkRequests() {
     console.log("Finally finished...");
     process.exit();
   }
-};
+  if (total % 1000 === 0) {
+    console.log("Already uploaded " + total + " data sets...");
+  }
+}
 
 process.on('exit', function() {
   elapsed_time('Execution time for: ' + amount + ' data sets.');
