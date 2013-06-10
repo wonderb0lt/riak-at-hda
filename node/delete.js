@@ -7,12 +7,15 @@ var db = require('riak-js').getClient({
   host: 'bdc-n-e4.fbi.h-da.de', port: '8098', debug: true
 });*/
 
+var total = 0;
+
 var instrument = {
   'riak.request.start': function(event) {
-    console.log('[riak-js] [start] ' + event.method.toUpperCase() + ' ' + event.path);
+    //console.log('[riak-js] [start] ' + event.method.toUpperCase() + ' ' + event.path);
   },
   'riak.request.end': function(event) {
-    console.log('[riak-js] [end] ' + event.method.toUpperCase() + ' ' + event.path);
+    //console.log('[riak-js] [end] ' + event.method.toUpperCase() + ' ' + event.path);
+    total++;
   }
 };
 
@@ -33,5 +36,8 @@ db.keys(bucket, { keys: 'stream' }).on('keys', function(keys) {
 setInterval(function() {
   if (test.length !== 0) {
     db.remove(bucket, test.pop());
+  }
+  if (total % 1000 === 0 && total !== 0) {
+    console.log("Already deleted " + total + " data sets...");
   }
 }, 1);
