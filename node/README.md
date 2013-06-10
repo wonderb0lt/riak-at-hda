@@ -1,4 +1,5 @@
 # INSTALL
+* (on cluster) `export LINKER=g++`
 * npm install in `node/` directory
 
 # Usage
