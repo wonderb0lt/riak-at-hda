@@ -7,7 +7,7 @@
     "Faker": "~0.5.8",
     "moment": "~2.0.0",
     "underscore": "~1.4.4",
-    "riak-js": "~0.10.2",
+    "riak-js": "~0.10.2"
   },
   "devDependencies": {},
   "scripts": {
