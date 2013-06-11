@@ -64,7 +64,7 @@ def main(args):
 
     print 'Query perfomed successfully! Took %.2fs.' % (end - start)
     print '#### RESULT ####'
-    for result in query.run():
+    for result in query.run(timeout=9999999):
         # Print the key (``v.key``) and the value for that key (``data``).
         print str(result)
 
