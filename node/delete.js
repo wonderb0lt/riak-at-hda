@@ -16,6 +16,9 @@ var instrument = {
   'riak.request.end': function(event) {
     //console.log('[riak-js] [end] ' + event.method.toUpperCase() + ' ' + event.path);
     total++;
+    if (total % 100 === 0 && total !== 0) {
+      console.log("Already deleted " + total + " data sets...");
+    }
   }
 };
 
@@ -37,7 +40,5 @@ setInterval(function() {
   if (test.length !== 0) {
     db.remove(bucket, test.pop());
   }
-  if (total % 1000 === 0 && total !== 0) {
-    console.log("Already deleted " + total + " data sets...");
-  }
+
 }, 1);

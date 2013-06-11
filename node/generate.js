@@ -24,6 +24,9 @@ var instrument = {
     //console.log('[riak-js] [end] ' + event.method.toUpperCase() + ' ' + event.path);
     total++;
     requests--;
+    if (total % 100 === 0 && total !== 0) {
+      console.log("Already uploaded " + total + " data sets...");
+    }
   }
 }
 
@@ -211,17 +214,11 @@ function generateData() {
   } else {
     db.save(bucket, flight.id, flight);
   }
-
-  if (index % 100 === 0) {
-    console.log("Generated already " + index + " data sets...");
-  }
-
-  index++;
 }
 
 // checks that we don't overwhelm the server with requests
 function checkRequests() {
-  if (index < amount) {
+  if (total < amount) {
     if (requests < MAX_REQUESTS) {
       generateData();
     } else {
@@ -230,9 +227,6 @@ function checkRequests() {
   } else {
     console.log("Finally finished...");
     process.exit();
-  }
-  if (total % 1000 === 0) {
-    console.log("Already uploaded " + total + " data sets...");
   }
 }
 
@@ -245,4 +239,4 @@ process.on('SIGINT', function() {
 });
 
 // start the whole mess
-setInterval(checkRequests, 10);
+setInterval(checkRequests, 1);
