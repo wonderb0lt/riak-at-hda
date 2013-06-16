@@ -54,6 +54,49 @@
       width: 800px;
       height: 600px;
     }
+
+    table.gridtable {
+      font-family: verdana,arial,sans-serif;
+      font-size:32px;
+      color:#333333;
+      border-width: 1px;
+      border-color: #666666;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+    table.gridtable thead {
+      border-width: 1px;
+      padding: 8px;
+      border-style: solid;
+      border-color: #666666;
+      background-color: #dedede;
+    }
+    table.gridtable td {
+      border-width: 1px;
+      padding: 8px;
+      border-style: solid;
+      border-color: #666666;
+      background-color: #ffffff;
+    }
+    table.gridtable caption {
+      border-width: 1px;
+      padding: 8px;
+      border-style: solid;
+      border-color: #666666;
+      background-color: #DDDDDD;
+    }
+
+    #result {
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+
+    #fig-kid {
+      text-align: center;
+    }
   </style>
 </head>
 
@@ -64,204 +107,124 @@
 	<img src="images/riak-logo.png" style="position:absolute">
 </section>
 
-<section class="slide" id="riak-overview-1">
-	<h2>Riak: Overview</h2>
-	<ul>
-		<li><h3>Key-value store</h3></li>
-    <li><h3>Based on Amazons Dynamo white paper</h3></li>
-    <li><h3>Distributed <em>without</em> a master node</h3></li>
-    <li><h3>Availability, partition tolerance and <em>eventual</em> consistency</h3></li>
-    <li><h3>Keys are organized in buckets</h3></li>
-    <li><h3>REST API</h3></li>
-	</ul>
-</section>
-
 <section class="slide" id="riak-overview-2">
-  <h2>Riak: Overview</h2>
+  <h2>Riak: Partitioning</h2>
   <h3>Key-based partitioning</h3>
   <img src="images/riak-ring.png" alt="">
 </section>
 
-<section class="slide" id="riak-installation">
-  <h2>Riak: Installation & Configuration</h2>
-  <ul>
-    <li><h3>Obtain <em>deb</em> file (for example, for Ubuntu 12.04)</h3></li>
-    <li><h3>Install with <code>dpkg -i riak_1.3.1-1_amd64.deb</code></h3></li>
-    <li><h3>Make sure <code>/etc/riak/app.config</code> is editable</h3></li>
-    <li><h3>Edit it to listen on the IP 0.0.0.0 (on lines 15, 33 and 37 in the standard config)</h3></li>
-    <li><h3>Change -name riak@0.0.0.0 to -name riak@bdc-n-e<strong>X</strong>.fbi.h-da.de in <code>/etc/riak/vm.args</code></h3></li>
-    <li><h3>Set <code>ulimit -n 4096</code> (max number of open files)</h3></li>
-  </ul>
-</section>
-
-<section class="slide" id="riak-config">
-  <h2>Riak: Installation & Configuration</h2>
-  <h3>Building a cluster</h3>
-  <pre><code>bin/riak-admin cluster join riak@192.168.1.10
-
-bin/riak-admin cluster plan
-bin/riak-admin cluster commit</code></pre>
-</section>
-
-<section class="slide" id="riak-config-1">
-  <h2>Riak: Installation & Configuration</h2>
-  <h3>Riak Control - Cluster view</h3>
-  <img src="images/riak-control-cluster.jpg" alt="">
-</section>
-
 <section class="slide" id="riak-data-models">
-  <h2>Riak: Data modelling</h2>
-  <pre><code class="javascript">{
-  "id": "006MME",
-  "personalflightdata": {...},
-  "passengers": [
-    {
-      "id": "PFEIFFER/ELKEMS",
-      "type": 0,
-      "name": "Pfeiffer",
-      "surname": "Elke"
+  <h2>Riak: Generation of fake data</h2>
+  <ul>
+    <li><h3>Genie.js - <a href="https://github.com/Trimeego/genie">link</a></h3></li>
+  </ul>
+  <pre><code class="javascript">"fares": {
+    template: {
+      "type": function() {
+        return 'ADT';
+      },
+      "fop": function() {
+        return 'invoice'
+      },
+      "base": {
+        range: [40, 200],
+        places: 2
+      },
+      "taxes": {
+        range: [10, 130],
+        places: 2
+      },
+      total: function() {
+        return this.base + this.taxes;
+      },
+      "currency": function() {
+        return 'EUR';
+      }
     }
-  ],
-  "flights": [
-    {
-      "id": "AF7542",
-      "departure": 1364373300,
-      "arrival": 1364377800,
-      "airline": "Air France",
-      "from": {...},
-      "to": {...},
-      "stops": [],
-      "duration": 4500,
-      "status": "Confirmed",
-      "aircraft": "Airbus Industrie A321"
-    }
-  ],
-  "fares": {...}
-}</code></pre>
+  }</code></pre>
 </section>
 
 <section class="slide" id="riak-insert-data">
-  <h2>Riak: Data insertion</h2>
+  <h2>Riak: Mass data insertion</h2>
   <ul>
-    <li><h3>Pretty easy!</h3></li>
-    <li><h3>Read in JSON from files</h3></li>
-    <li><h3>Save it in bucket</h3></li>
+    <li><h3>Generate fake data</h3></li>
+    <li><h3>Insert via HTTP POST</h3></li>
   </ul>
   <pre>
-    <code class="python">def main(args):
-  data = get_data_from_file(args['<file>'])
+    <code class="javascript">function generateData() {
+  var flight = genie(flightTemplate); // generate fake data
 
-  client = riak.RiakClient(host=conf.host, port=conf.port)
-  bucket = client.bucket(conf.buckets['flights'])
-
-  for idx, flight in enumerate(data):
-    bucket.new(flight['id'], flight).store()</code>
-  </pre>
-</section>
-
-<section class="slide" id="riak-query-data-0">
-  <h2>Riak: Query data</h2>
-  <ul>
-    <li><h3>HTTP GET Requests</h3></li>
-    <li><h3>Map/Reduce</h3></li>
-    <li><h3>Riak Search</h3></li>
-    <li><h3>Secondary Indexes</h3></li>
-    <li><h3>Link walking</h3></li>
-  </ul>
-</section>
-
-<section class="slide" id="riak-query-data-0-1">
-  <h2>Riak: Query data</h2>
-  <h3>HTTP GET Request</h3>
-  <pre>
-    <code class="bash">$ curl -v http://127.0.0.1:8098/riak/test/doc2</code>
-  </pre>
-</section>
-
-<section class="slide" id="riak-query-data-1">
-  <h2>Riak: Query data</h2>
-  <h3>Map</h3>
-  <pre>
-    <code class="javascript">function(v) {
-  var data = JSON.parse(v.values[0].data);
-  if (data &amp;&amp; data.fares &amp;&amp; data.fares.taxes) {
-    return [data.fares.taxes];
+  if (!upload) {
+    console.dir(flight);
   } else {
-    return []
+    db.save(bucket, flight.id, flight);
   }
 }</code>
   </pre>
 </section>
 
-<section class="slide" id="riak-query-data-2">
-  <h2>Riak: Query data</h2>
-  <h3>Reduce</h3>
-  <pre>
-    <code class="javascript">function(v) {
-  var total = 0.0;
-  var sum = 0;
-  for (i in v) {
-    sum += v[i];
-    total++;
-  }
-  var avg = sum/total;
-  return [avg];
-}</code>
-  </pre>
+<section class="slide" id="riak-results-0">
+  <h2>Riak: Results</h2>
+  <ul>
+    <li><h3>Performance insert: ~400 dataset/s</h3></li>
+    <li><h3>Performance delete: ~400 dataset/s</h3></li>
+    <li><h3>Only one measurement per step</h3></li>
+  </ul>
+  <div id="table-container">
+    <table class="gridtable">
+      <caption>Performance Measurements</capion>
+      <thead>
+        <tr>
+          <td></td>
+          <td>1 mio</td>
+          <td>2 mio</td>
+          <td>5 mio</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Generation</td>
+          <td>~42min</td>
+          <td>~84min</td>
+          <td>~210min</td>
+        </tr>
+        <tr>
+            <td>HDD Usage</td>
+            <td>2,3GB</td>
+            <td>4,2GB</td>
+            <td>11,5GB</td>
+        </tr>
+        <tr>
+            <td>Average Taxes</td>
+            <td>126s</td>
+            <td>241s</td>
+            <td>594s</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
-<section class="slide" id="riak-query-data-3">
-  <h2>Riak: Query data</h2>
-  <h3>Riak Search</h3>
-  <pre>
-    <code class="javascript">import riak
-
-client = riak.RiakClient()
-
-# First parameter is the bucket we want to search within, the second
-# is the query we want to perform.
-search_query = client.search('user', 'first_name:[Anna TO John]')
-
-for result in search_query.run():
-    # You get ``RiakLink`` objects back.
-    user = result.get()
-    user_data = user.get_data()
-    print "%s %s" % (user_data['first_name'], user_data['last_name'])</code>
-  </pre>
+<section class="slide" id="riak-chart">
+  <h2>Riak: Results</h2>
+  <h3>Performance Chart</h3>
+  <figure id="fig-chart">
+    <canvas id="result" width="600" height="350"></canvas>
+  </figure>
 </section>
 
-<section class="slide" id="riak-query-data-4">
-  <h2>Riak: Query data</h2>
-  <h3>Riak Secondary Indexes</h3>
-  <pre>
-    <code class="javascript">import riak
+<section class="slide" id="riak-optimiztaions">
+  <h2>Riak: Optimizations</h2>
+  <ul>
+    <li><h3>Disable Riak Search --> disabled by default :(</h3></li>
+    <li><h3>Use Protocol Buffers --> was slower :(</h3></li>
+    <li><h3>Change <em>n_val</em> to 0 --> no replication :(</h3></li>
+  </ul>
+  <figure id="fig-kid">
+    <img src="images/riak-bored-kid.jpg" alt="">
+    <figcaption>Generating 5mio datasets</figcaption>
+  </figure>
 
-client = riak.RiakClient()
-bucket = client.bucket('mybucket')
-
-# Create and store the object with indexes...
-obj = bucket.new('mykey1', 'mydata')
-obj.add_index('field1_bin', 'val1')
-obj.add_index('field2_int', 1001)
-obj.store()
-
-# Query the indexes. The return value is a list of ``RiakLink`` objects.
-results = client.index('mybucket', 'field1_bin', 'val1').run()
-
-# Query the indexes using a range...
-results = client.index('mybucket', 'field1_bin', 'val1', 'val5').run()
-
-# Remove an index entry...
-obj = bucket.get('mykey1')
-obj.remove_index('field1_bin', 'val1')
-obj.store()</code>
-  </pre>
-</section>
-
-<section class="slide" id="riak-query-data-4">
-  <h2>Riak: Query data</h2>
-  <h3>Link Walking</h3>
-  <img src="images/riak-link-walking.png" alt="">
 </section>
 
 <section class="slide" id="riak-thanks">
@@ -435,12 +398,50 @@ obj.store()</code>
 
 <!-- 3rd party libs -->
 <script src="scripts/highlight.pack.js"></script>
+<script src="scripts/chart.min.js"></script>
 
 <!-- Initialize the deck -->
 <script>
 $(function() {
 	$.deck('.slide');
   $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+
+  var options = {
+    scaleFontSize: 24,
+    scaleLabel: " ",
+    bezierCurve: false,
+    datasetFill: false
+  }
+
+  var data = {
+    labels : ["1 mio","2 mio","5 mio"],
+    datasets : [
+
+      {
+        fillColor : "rgba(85,220,54,0.5)",
+        strokeColor : "rgba(85,220,54,1)",
+        pointColor : "rgba(85,220,54,1)",
+        pointStrokeColor : "#fff",
+        data : [2524,5035,12636]
+      },
+      {
+        fillColor : "rgba(151,85,54,0.5)",
+        strokeColor : "rgba(151,85,54,0.5)",
+        pointColor : "rgba(151,85,54,0.5)",
+        pointStrokeColor : "#fff",
+        data : [2300,4200,11500]
+      },
+      {
+        fillColor : "rgba(151,187,205,0.5)",
+        strokeColor : "rgba(151,187,205,1)",
+        pointColor : "rgba(151,187,205,1)",
+        pointStrokeColor : "#fff",
+        data : [126, 241, 594]
+      },
+    ]
+  }
+
+  new Chart($("#result")[0].getContext('2d')).Line(data, options);
 });
 </script>
 
