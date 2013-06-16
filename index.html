@@ -114,9 +114,32 @@
 </section>
 
 <section class="slide" id="riak-overview-3">
-  <h2>Riak: Partitioning</h2>
-  <h3>Default Partitions: 64</h3>
-  <h3>Default Replication: nval 3</h3>
+        <h2>Riak: Partitioning</h2>
+        <ul>
+            <li><h3>Default Partitions: 64</h3></li>
+            <li><h3>Default Replication: nval 3</h3></li>
+            <li><h3>Node &lt; nval? nval!</h3></li>
+        </ul>
+<pre><code class="javascript">{
+    schema,
+    [
+        {version, "1.1"},
+        {default_field, "title"},
+        {default_op, "or"},
+        {n_val, 3},
+        {analyzer_factory, {erlang, text_analyzers, whitespace_analyzer_factory}}
+    ],
+    [
+        %% Don't parse the field, treat it as a single token.
+        {field, [
+            {name, "id"},
+            {analyzer_factory, {erlang, text_analyzers, noop_analyzer_factory}}
+        ]},
+        {dynamic_field, [
+            {name, "*"}
+        ]}
+    ]
+}.  </code></pre>
 </section>
 
 <section class="slide" id="riak-data-models">
