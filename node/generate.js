@@ -186,9 +186,9 @@ var flightTemplate = {
 var args = process.argv.splice(2);
 var amount = Number(args[0]) || 1;
 var upload = Boolean(args[1]) || false;
-var bucket = args[2];
+var bucket = args[2] || "";
 
-if (args.length < 3) {
+if (args[0] === "help") {
   console.log("USE: node generate [amount] [upload] [bucket] > [logfile]");
   console.log("     node generate 1000 true TestBucket > generate.log");
   process.exit();
