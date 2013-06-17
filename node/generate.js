@@ -10,7 +10,7 @@ var requests = 0;
 var index = 0;
 var total = 0;
 
-var MAX_REQUESTS = 400;
+var MAX_REQUESTS = 3000;
 
 var instrument = {
   'riak.request.start': function(event) {
@@ -236,4 +236,4 @@ process.on('SIGINT', function() {
 });
 
 // start the whole mess
-setInterval(checkRequests, 0.5);
+setInterval(checkRequests, 0.1);

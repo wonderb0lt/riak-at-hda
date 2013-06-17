@@ -41,4 +41,4 @@ setInterval(function() {
     db.remove(bucket, test.pop());
   }
 
-}, 1);
+}, 0.5);
