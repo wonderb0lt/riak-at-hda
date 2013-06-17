@@ -2,18 +2,15 @@ var _ = require('underscore');
 var genie = require('./genie');
 var db = require('riak-js').getClient({
   pool: {
-    servers: ['bdc-n-e3.fbi.h-da.de:8098', 'bdc-n-e4.fbi.h-da.de:8098']
+    servers: ['bdc-n-e3.fbi.h-da.de:8098', 'bdc-n-e4.fbi.h-da.de:8098', 'bdc-n-f3.fbi.h-da.de:8098', 'bdc-n-f4.fbi.h-da.de:8098']
   }
 });
-/*var db = require('riak-js').getClient({
-  host: 'bdc-n-e3.fbi.h-da.de', port: '8098', api: 'protobuf'
-});*/
 
 var requests = 0;
 var index = 0;
 var total = 0;
 
-var MAX_REQUESTS = 100;
+var MAX_REQUESTS = 400;
 
 var instrument = {
   'riak.request.start': function(event) {
@@ -28,7 +25,7 @@ var instrument = {
       console.log("Already uploaded " + total + " data sets...");
     }
   }
-}
+};
 
 db.registerListener(instrument);
 
@@ -39,7 +36,7 @@ var elapsed_time = function(note) {
   var elapsed = process.hrtime(start)[1] / 1000000; // divide by a million to get nano to milli
   console.log(process.hrtime(start)[0] + " s, " + elapsed.toFixed(precision) + " ms - " + note); // print message + time
   start = process.hrtime(); // reset the timer
-}
+};
 
 var companies = ['Aeroflot', 'Air France', 'German Wings', 'Air Berlin', 'Lufthansa', 'Aer Lingus',
     'US Airways', 'Delta Airlines'
@@ -166,7 +163,7 @@ var flightTemplate = {
         return 'ADT';
       },
       "fop": function() {
-        return 'invoice'
+        return 'invoice';
       },
       "base": {
         range: [40, 200],
@@ -239,4 +236,4 @@ process.on('SIGINT', function() {
 });
 
 // start the whole mess
-setInterval(checkRequests, 1);
+setInterval(checkRequests, 0.5);
