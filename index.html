@@ -118,7 +118,10 @@
   <ul>
     <li><h3>Genie.js - <a href="https://github.com/Trimeego/genie">link</a></h3></li>
   </ul>
-  <pre><code class="javascript">"fares": {
+  <pre><code class="javascript">var flightTemplate = {
+  "id": {
+    format: '##.#.#'
+  },"fares": {
     template: {
       "type": function() {
         return 'ADT';
@@ -141,7 +144,7 @@
         return 'EUR';
       }
     }
-  }</code></pre>
+  };</code></pre>
 </section>
 
 <section class="slide" id="riak-insert-data">
