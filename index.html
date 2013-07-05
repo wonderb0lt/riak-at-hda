@@ -259,6 +259,48 @@
 
 </section>
 
+<section class="slide" id="riak-results-20">
+  <h2>Riak: Results Prak 3</h2>
+  <ul>
+    <li><h3>More Nodes slower write Performance</h3></li>
+    <li><h3>More Nodes better Query Performance</h3></li>
+    
+  </ul>
+  <div id="table-container">
+    <table class="gridtable">
+      <caption>Performance Measurements for 100k datasets</capion>
+      <thead>
+        <tr>
+          <td></td>
+          <td>2 Nodes</td>
+          <td>3 Nodes</td>
+          <td>4 Nodes</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Generation</td>
+          <td>250 s</td>
+          <td>250 s</td>
+          <td>258 s</td>
+        </tr>
+        <tr>
+            <td>Map</td>
+            <td>11,63s</td>
+            <td>9,15s</td>
+            <td>6,71s</td>
+        </tr>
+	<tr>
+            <td>Normal Query</td>
+            <td>8,63s</td>
+            <td>6,63s</td>
+            <td>4,55s</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
 <section class="slide" id="riak-thanks">
   <h1>Thank you!</h1>
 </section>
